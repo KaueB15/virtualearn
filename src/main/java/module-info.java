@@ -21,4 +21,7 @@ module br.com.fafic.virtualearn {
     exports br.com.fafic.virtualearn.model;
     opens br.com.fafic.virtualearn.model;
 
+    exports br.com.fafic.virtualearn.controllers;
+    opens br.com.fafic.virtualearn.controllers;
+
 }
