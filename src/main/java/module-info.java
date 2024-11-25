@@ -8,7 +8,6 @@ module br.com.fafic.virtualearn {
     requires net.synedra.validatorfx;
     requires org.kordamp.ikonli.javafx;
     requires org.kordamp.bootstrapfx.core;
-    requires eu.hansolo.tilesfx;
     requires com.almasb.fxgl.all;
 
     requires jakarta.persistence;
@@ -23,5 +22,7 @@ module br.com.fafic.virtualearn {
 
     exports br.com.fafic.virtualearn.controllers;
     opens br.com.fafic.virtualearn.controllers;
+    exports br.com.fafic.virtualearn.view;
+    opens br.com.fafic.virtualearn.view;
 
 }
