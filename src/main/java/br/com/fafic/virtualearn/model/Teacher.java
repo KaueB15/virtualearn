@@ -22,6 +22,9 @@ public class Teacher{
     @Column(nullable = false)
     private String name, email, phoneNumber, matter;
 
+    @Column(nullable = false, unique = true)
+    private String cpf;
+
     @Column(nullable = false)
     private LocalDate dateOfBirth;
 
