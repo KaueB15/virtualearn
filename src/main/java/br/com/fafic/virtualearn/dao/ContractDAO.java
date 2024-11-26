@@ -14,46 +14,30 @@ public class ContractDAO {
         return emc;
     }
     public void registerContract(Contract contract){
-        try {
             getEmc().getEntityManager().getTransaction().begin();
             getEmc().getEntityManager().persist(contract);
             getEmc().getEntityManager().getTransaction().commit();
-        }finally {
-            getEmc().getEntityManager().close();
-        }
     }
     public List<Contract> getAllContract(){
         List<Contract> contracts = null;
-        try {
             getEmc().getEntityManager().getTransaction().begin();
             TypedQuery<Contract> query = getEmc().getEntityManager()
                     .createQuery("SELECT c FROM Contract c", Contract.class);
             contracts = query.getResultList();
-        }finally {
-            getEmc().getEntityManager().close();
-        }
         return contracts;
     }
     public void updateContract(Contract contract){
-        try {
             getEmc().getEntityManager().getTransaction().begin();
             getEmc().getEntityManager().persist(contract);
             getEmc().getEntityManager().getTransaction().commit();
-        }finally {
-            getEmc().getEntityManager().close();
-        }
     }
     public Contract getContractById(UUID id) {
         return getEmc().getEntityManager().find(Contract.class, id);
     }
     public void deleteContractById(UUID id){
-        try {
             Contract contract = getContractById(id);
             getEmc().getEntityManager().getTransaction().begin();
             getEmc().getEntityManager().merge(contract);
             getEmc().getEntityManager().getTransaction().commit();
-        }finally {
-            getEmc().getEntityManager().close();
-        }
     }
 }
