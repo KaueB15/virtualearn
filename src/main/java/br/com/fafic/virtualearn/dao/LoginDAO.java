@@ -19,36 +19,24 @@ public class LoginDAO {
     }
 
     public void enterLogin(Login login){
-        try {
             getEmc().getEntityManager().getTransaction().begin();
             getEmc().getEntityManager().persist(login);
             getEmc().getEntityManager().getTransaction().commit();
-        } finally {
-            getEmc().getEntityManager().close();
-        }
     }
 
     public List<Login> getAllLogins(){
         List<Login> logins = null;
-        try {
             getEmc().getEntityManager().getTransaction().begin();
             TypedQuery<Login> query = getEmc().getEntityManager()
                     .createQuery("SELECT l FROM Login l", Login.class);
             logins = query.getResultList();
-        } finally {
-            getEmc().getEntityManager().close();
-        }
         return logins;
     }
 
     public void updateLogin(Login login){
-        try{
             getEmc().getEntityManager().getTransaction().begin();
             getEmc().getEntityManager().merge(login);
             getEmc().getEntityManager().getTransaction().commit();
-        } finally {
-            getEmc().getEntityManager().close();
-        }
     }
 
     public Login getloginById(UUID id){
@@ -56,17 +44,12 @@ public class LoginDAO {
     }
 
     public void deleteLoginById(UUID id){
-        try {
             Login login = getloginById(id);
             getEmc().getEntityManager().getTransaction().begin();
             getEmc().getEntityManager().remove(id);
             getEmc().getEntityManager().getTransaction().commit();
-        } finally {
-            getEmc().getEntityManager().close();
-        }
     }
     public Login checkLogin(String username, String password){
-        try{
             getEmc().getEntityManager().getTransaction().begin();
             TypedQuery<Login> query = getEmc().getEntityManager()
                     .createQuery("SELECT COUNT(l) FROM Login l WHERE l.login = :username AND l.password = :password", Login.class);
@@ -75,12 +58,8 @@ public class LoginDAO {
             Login login = query.getSingleResult();
             getEmc().getEntityManager().getTransaction().commit();
             return login;
-        } finally {
-            getEmc().getEntityManager().close();
-        }
     }
     public boolean checkLoginn(String username, String password){
-        try {
             getEmc().getEntityManager().getTransaction().begin();
             //Long é o tipo de dado retornado pela consulta, representando a contagem de registros
             //que atendem aos critérios fornecidos.
@@ -90,8 +69,27 @@ public class LoginDAO {
             query.setParameter("password", password);
             Long count = query.getSingleResult();
             return  count > 0;
-        }finally {
-            getEmc().getEntityManager().close();
+    }
+    public Login findByLogin(Login login){
+        getEmc().getEntityManager().getTransaction().begin();
+        TypedQuery<Login> query = getEmc().getEntityManager()
+                .createQuery("SELECT l FROM Login l WHERE l.login = :username", Login.class);
+        query.setParameter("username", login.getLogin());
+        List<Login> resultList = query.getResultList();
+        getEmc().getEntityManager().getTransaction().commit();
+        if(resultList.isEmpty()){
+            return null;
+        }else{
+            return resultList.get(0);
         }
     }
+    public void deleteLogin(Login login) {
+        Login foundLogin = findByLogin(login);
+        if (foundLogin != null) {
+            getEmc().getEntityManager().getTransaction().begin();
+            getEmc().getEntityManager().remove(foundLogin);
+            getEmc().getEntityManager().getTransaction().commit();
+        }
+    }
+
 }
