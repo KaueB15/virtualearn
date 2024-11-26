@@ -1,0 +1,8 @@
+.stack-bg{
+    -fx-background-image: url("images/background.jpg");
+    -fx-background-size: cover;
+}
+.anchor-pane{
+    -fx-background-color: rgba(243, 243, 243, 0.99);
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.5), 10, 0.5, 5, 5);
+}

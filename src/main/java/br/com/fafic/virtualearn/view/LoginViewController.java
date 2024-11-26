@@ -1,5 +1,6 @@
 package br.com.fafic.virtualearn.view;
 
+import br.com.fafic.virtualearn.controllers.LoginController;
 import br.com.fafic.virtualearn.dao.LoginDAO;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -13,14 +14,27 @@ public class LoginViewController {
     Label welcomeText;
 
     @FXML
-    TextField textField;
+    TextField fieldUsername;
 
     @FXML
-    PasswordField passwordField;
+    PasswordField fieldPassword;
 
     @FXML
     Button button;
 
-    LoginDAO loginDAO = new LoginDAO();
+    LoginController loginController = new LoginController();
+
+    public void loginValidate(){
+
+        String userName = fieldUsername.getText();
+        String password = fieldPassword.getText();
+
+        if (loginController.validateLogin(userName, password)){
+            System.out.println("LOGADO");
+        }else {
+            System.out.println("NÃO DEU CERTO");
+        }
+
+    }
 
 }

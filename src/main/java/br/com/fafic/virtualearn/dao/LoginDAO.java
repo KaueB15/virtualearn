@@ -60,7 +60,6 @@ public class LoginDAO {
             return login;
     }
     public boolean checkLoginn(String username, String password){
-            getEmc().getEntityManager().getTransaction().begin();
             //Long é o tipo de dado retornado pela consulta, representando a contagem de registros
             //que atendem aos critérios fornecidos.
             TypedQuery<Long> query = getEmc().getEntityManager()
