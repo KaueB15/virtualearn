@@ -8,23 +8,20 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.com.fafic.virtualearn.view.LoginViewController">
+<StackPane styleClass="stack-bg" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.com.fafic.virtualearn.view.LoginViewController">
    <children>
-      <AnchorPane prefHeight="600.0" prefWidth="430.0" style="-fx-background-color: #262626;">
+      <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="600.0" prefWidth="1000.0" styleClass="anchor-pane" stylesheets="@styles.css" >
          <children>
-            <ImageView fitHeight="600.0" fitWidth="430.0" layoutY="2.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="602.0" fitWidth="430.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@imgs/VirtualLearn%20(1).png" />
                </image>
             </ImageView>
-         </children>
-      </AnchorPane>
-      <AnchorPane layoutX="430.0" layoutY="1.0" prefHeight="600.0" prefWidth="571.0">
-         <children>
-            <TextField id="Username" fx:id="textUsername" layoutX="96.0" layoutY="270.0" prefHeight="25.0" prefWidth="379.0" promptText="Username" style="-fx-background-color: #555;">
+            <TextField id="Username" fx:id="fieldUsername" layoutX="526.0" layoutY="270.0" prefHeight="25.0" prefWidth="379.0" promptText="Username" style="-fx-background-color: #555;">
                <font>
                   <Font name="Bodoni MT Bold" size="14.0" />
                </font>
@@ -32,53 +29,53 @@
                   <Insets />
                </opaqueInsets>
             </TextField>
-            <PasswordField id="password" fx:id="textPassword" layoutX="96.0" layoutY="345.0" prefHeight="25.0" prefWidth="379.0" promptText="Password" style="-fx-background-color: #555;">
+            <PasswordField id="password" fx:id="fieldPassword" layoutX="526.0" layoutY="345.0" prefHeight="25.0" prefWidth="379.0" promptText="Password" style="-fx-background-color: #555;">
                <font>
                   <Font size="14.0" />
                </font>
             </PasswordField>
-            <Label layoutX="163.0" layoutY="140.0" text="Acces your acount" textAlignment="CENTER">
+            <Label layoutX="593.0" layoutY="140.0" text="Acces your acount" textAlignment="CENTER">
                <font>
                   <Font size="28.0" />
                </font>
             </Label>
-            <Label layoutX="188.0" layoutY="82.0" text="Welcome" textAlignment="CENTER">
+            <Label layoutX="618.0" layoutY="82.0" text="Welcome" textAlignment="CENTER">
                <font>
                   <Font name="System Bold" size="40.0" />
                </font>
             </Label>
-            <Label layoutX="69.0" layoutY="375.0" />
-            <Text layoutX="180.0" layoutY="527.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Don't have an acount?">
+            <Label layoutX="499.0" layoutY="375.0" />
+            <Text layoutX="589.0" layoutY="523.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Don't have an acount?">
                <font>
                   <Font name="Bodoni MT Bold" size="16.0" />
                </font>
             </Text>
-            <Text layoutX="96.0" layoutY="264.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Username:">
+            <Text layoutX="526.0" layoutY="264.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Username:">
                <font>
                   <Font name="System Bold" size="16.0" />
                </font>
             </Text>
-            <Text layoutX="96.0" layoutY="341.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Password:">
+            <Text layoutX="526.0" layoutY="341.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Password:">
                <font>
                   <Font name="System Bold" size="16.0" />
                </font>
             </Text>
-            <ImageView fitHeight="30.0" fitWidth="32.0" layoutX="443.0" layoutY="270.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="30.0" fitWidth="32.0" layoutX="873.0" layoutY="270.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@imgs/Design%20sem%20nome%20(1).png" />
                </image>
             </ImageView>
-            <ImageView fitHeight="30.0" fitWidth="32.0" layoutX="445.0" layoutY="345.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="30.0" fitWidth="32.0" layoutX="875.0" layoutY="345.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@imgs/Design%20sem%20nome%20(2).png" />
                </image>
             </ImageView>
-            <Button fx:id="loginButton" layoutX="204.0" layoutY="416.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="110.0" style="-fx-background-color: #555;" text="Login" textAlignment="JUSTIFY" textFill="WHITE">
+            <Button fx:id="loginButton" onAction="#loginValidate" layoutX="651.0" layoutY="417.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="110.0" style="-fx-background-color: #555;" text="Login" textAlignment="JUSTIFY" textFill="WHITE">
                <font>
                   <Font size="22.0" />
                </font>
             </Button>
-            <Button layoutX="351.0" layoutY="503.0" mnemonicParsing="false" style="-fx-background-color: #2555;" text="Sing Up" textAlignment="JUSTIFY" textFill="#171354">
+            <Button layoutX="756.0" layoutY="501.0" mnemonicParsing="false" style="-fx-background-color: #2555;" text="Sing Up" textAlignment="JUSTIFY" textFill="#171354">
                <font>
                   <Font size="14.0" />
                </font>
@@ -86,4 +83,4 @@
          </children>
       </AnchorPane>
    </children>
-</AnchorPane>
+</StackPane>

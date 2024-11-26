@@ -43,8 +43,6 @@ public class RegisterStudenterViewController {
 
     LoginController loginController = new LoginController();
 
-    LoginDAO loginDAO = new LoginDAO();
-
     @FXML
     public void registerStudent(){
 
@@ -59,7 +57,7 @@ public class RegisterStudenterViewController {
         String phoneNumber = phoneField.getText();
         LocalDate dateOfBirthday = dateField.getValue();
 
-       studentController.createNewStudent(name, email,phoneNumber, dateOfBirthday, userLogin, cpf);
+        studentController.createNewStudent(name, email,phoneNumber, dateOfBirthday, userLogin, cpf);
 
     }
 

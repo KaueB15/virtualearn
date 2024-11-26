@@ -41,9 +41,6 @@ public class StudentController {
         }catch (FieldIsNullException e){
             System.err.println(e.getMessage());
             loginDAO.deleteLogin(login);
-        }catch (ConstraintViolationException e){
-            loginDAO.deleteLogin(login);
-            System.out.println("CONSTRAIINT");
         }catch (RuntimeException e){
             loginDAO.deleteLogin(login);
             System.out.println("RUNTIME");
@@ -52,7 +49,7 @@ public class StudentController {
 
     public Student getStudentById(UUID id){
         try {
-            Student student = studentDAO.getByID(id);
+            Student student = studentDAO.getStudentByID(id);
 
             if(student == null){
                 throw new StudentNotFoundException();
