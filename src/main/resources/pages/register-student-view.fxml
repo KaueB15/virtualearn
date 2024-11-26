@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.com.fafic.virtualearn.view.RegisterStudenterViewController">
+   <children>
+      <TextField fx:id="loginField" layoutX="391.0" layoutY="91.0" />
+      <TextField fx:id="passwordField" layoutX="391.0" layoutY="138.0" />
+      <TextField fx:id="nameField" layoutX="392.0" layoutY="188.0" />
+      <TextField fx:id="cpfField" layoutX="391.0" layoutY="243.0" />
+      <DatePicker fx:id="dateField" layoutX="379.0" layoutY="300.0" />
+      <TextField fx:id="emailField" layoutX="392.0" layoutY="380.0" />
+      <TextField fx:id="phoneField" layoutX="391.0" layoutY="479.0" />
+      <Label layoutX="392.0" layoutY="68.0" text="LOGIN" />
+      <Label layoutX="392.0" layoutY="121.0" text="SENHA" />
+      <Label layoutX="393.0" layoutY="171.0" text="NOME" />
+      <Label layoutX="393.0" layoutY="226.0" text="CPF" />
+      <Label layoutX="376.0" layoutY="283.0" text="DATA" />
+      <Label layoutX="390.0" layoutY="355.0" prefHeight="17.0" prefWidth="48.0" text="EMAIL" />
+      <Label layoutX="394.0" layoutY="462.0" text="TELEFONE" />
+      <Button id="registerButton" layoutX="430.0" layoutY="533.0" mnemonicParsing="false" onAction="#registerStudent" text="Button" />
+   </children>
+</AnchorPane>

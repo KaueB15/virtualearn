@@ -8,7 +8,7 @@ import java.util.Objects;
 
 public class EntityManagerConnection {
 
-    private EntityManagerFactory emf = Persistence.createEntityManagerFactory("virtualearn");
+    private static final EntityManagerFactory emf = Persistence.createEntityManagerFactory("virtualearn");
     private EntityManager entityManager;
 
     public EntityManager getEntityManager() {
@@ -18,4 +18,9 @@ public class EntityManagerConnection {
         return entityManager;
     }
 
+    public void closeFactory() {
+        if (emf.isOpen()) {
+            emf.close();
+        }
+    }
 }
