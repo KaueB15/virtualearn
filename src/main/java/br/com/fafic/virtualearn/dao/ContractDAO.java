@@ -1,60 +1,56 @@
 package br.com.fafic.virtualearn.dao;
 
-import br.com.fafic.virtualearn.model.Student;
+import br.com.fafic.virtualearn.model.Contract;
 import br.com.fafic.virtualearn.persistence.EntityManagerConnection;
 import jakarta.persistence.TypedQuery;
-import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
 
 import java.util.List;
 import java.util.UUID;
 
-@AllArgsConstructor
-@NoArgsConstructor
-public class StudentDAO {
+public class ContractDAO {
     private EntityManagerConnection emc = new EntityManagerConnection();
 
     public EntityManagerConnection getEmc() {
         return emc;
     }
-    public void registerStudent(Student student){
+    public void registerContract(Contract contract){
         try {
             getEmc().getEntityManager().getTransaction().begin();
-            getEmc().getEntityManager().persist(student);
+            getEmc().getEntityManager().persist(contract);
             getEmc().getEntityManager().getTransaction().commit();
         }finally {
             getEmc().getEntityManager().close();
         }
     }
-    public List<Student> getAllStudents(){
-        List<Student> students = null;
-        try{
+    public List<Contract> getAllContract(){
+        List<Contract> contracts = null;
+        try {
             getEmc().getEntityManager().getTransaction().begin();
-            TypedQuery<Student> query = getEmc().getEntityManager()
-                    .createQuery("SELECT s FROM Student s", Student.class);
-            students = query.getResultList();
+            TypedQuery<Contract> query = getEmc().getEntityManager()
+                    .createQuery("SELECT c FROM Contract c", Contract.class);
+            contracts = query.getResultList();
         }finally {
             getEmc().getEntityManager().close();
         }
-        return students;
+        return contracts;
     }
-    public void updateStudent(Student student){
+    public void updateContract(Contract contract){
         try {
             getEmc().getEntityManager().getTransaction().begin();
-            getEmc().getEntityManager().merge(student);
+            getEmc().getEntityManager().persist(contract);
             getEmc().getEntityManager().getTransaction().commit();
         }finally {
             getEmc().getEntityManager().close();
         }
     }
-    public Student getStudentByID(UUID id){
-            return getEmc().getEntityManager().find(Student.class, id);
+    public Contract getContractById(UUID id) {
+        return getEmc().getEntityManager().find(Contract.class, id);
     }
-    public void deleteStudentById(UUID id){
-        try{
-            Student student = getStudentByID(id);
+    public void deleteContractById(UUID id){
+        try {
+            Contract contract = getContractById(id);
             getEmc().getEntityManager().getTransaction().begin();
-            getEmc().getEntityManager().remove(student);
+            getEmc().getEntityManager().merge(contract);
             getEmc().getEntityManager().getTransaction().commit();
         }finally {
             getEmc().getEntityManager().close();

@@ -1,60 +1,57 @@
 package br.com.fafic.virtualearn.dao;
 
-import br.com.fafic.virtualearn.model.Student;
+import br.com.fafic.virtualearn.model.Registration;
 import br.com.fafic.virtualearn.persistence.EntityManagerConnection;
 import jakarta.persistence.TypedQuery;
-import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
 
 import java.util.List;
 import java.util.UUID;
 
-@AllArgsConstructor
-@NoArgsConstructor
-public class StudentDAO {
+public class RegistrationDAO {
     private EntityManagerConnection emc = new EntityManagerConnection();
 
     public EntityManagerConnection getEmc() {
         return emc;
     }
-    public void registerStudent(Student student){
+    public void registerRegistration(Registration registration){
         try {
             getEmc().getEntityManager().getTransaction().begin();
-            getEmc().getEntityManager().persist(student);
+            getEmc().getEntityManager().persist(registration);
             getEmc().getEntityManager().getTransaction().commit();
         }finally {
             getEmc().getEntityManager().close();
         }
     }
-    public List<Student> getAllStudents(){
-        List<Student> students = null;
-        try{
+    public List<Registration> registrations(){
+        List<Registration> registrations = null;
+        try {
             getEmc().getEntityManager().getTransaction().begin();
-            TypedQuery<Student> query = getEmc().getEntityManager()
-                    .createQuery("SELECT s FROM Student s", Student.class);
-            students = query.getResultList();
+            TypedQuery<Registration> query = getEmc().getEntityManager()
+                    .createQuery("SELECT r FROM Registration r", Registration.class);
+            registrations = query.getResultList();
+            getEmc().getEntityManager().getTransaction().commit();
         }finally {
             getEmc().getEntityManager().close();
         }
-        return students;
+        return registrations;
     }
-    public void updateStudent(Student student){
+    public void updateRegistration(Registration registration){
         try {
             getEmc().getEntityManager().getTransaction().begin();
-            getEmc().getEntityManager().merge(student);
+            getEmc().getEntityManager().merge(registration);
             getEmc().getEntityManager().getTransaction().commit();
         }finally {
             getEmc().getEntityManager().close();
         }
     }
-    public Student getStudentByID(UUID id){
-            return getEmc().getEntityManager().find(Student.class, id);
+    public Registration getRegistrationById(UUID id){
+        return getEmc().getEntityManager().find(Registration.class, id);
     }
-    public void deleteStudentById(UUID id){
-        try{
-            Student student = getStudentByID(id);
+    public void deleteRegistrationById(UUID id){
+        try {
+            Registration registration = getRegistrationById(id);
             getEmc().getEntityManager().getTransaction().begin();
-            getEmc().getEntityManager().remove(student);
+            getEmc().getEntityManager().remove(registration);
             getEmc().getEntityManager().getTransaction().commit();
         }finally {
             getEmc().getEntityManager().close();

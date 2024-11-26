@@ -1,60 +1,56 @@
 package br.com.fafic.virtualearn.dao;
 
-import br.com.fafic.virtualearn.model.Student;
+import br.com.fafic.virtualearn.model.Rating;
 import br.com.fafic.virtualearn.persistence.EntityManagerConnection;
 import jakarta.persistence.TypedQuery;
-import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
 
 import java.util.List;
 import java.util.UUID;
 
-@AllArgsConstructor
-@NoArgsConstructor
-public class StudentDAO {
+public class RatingDAO {
     private EntityManagerConnection emc = new EntityManagerConnection();
 
     public EntityManagerConnection getEmc() {
         return emc;
     }
-    public void registerStudent(Student student){
+    public void registerRating(Rating rating){
         try {
             getEmc().getEntityManager().getTransaction().begin();
-            getEmc().getEntityManager().persist(student);
+            getEmc().getEntityManager().persist(rating);
             getEmc().getEntityManager().getTransaction().commit();
         }finally {
             getEmc().getEntityManager().close();
         }
     }
-    public List<Student> getAllStudents(){
-        List<Student> students = null;
-        try{
+    public List<Rating> getAllRating(){
+        List<Rating> ratings = null;
+        try {
             getEmc().getEntityManager().getTransaction().begin();
-            TypedQuery<Student> query = getEmc().getEntityManager()
-                    .createQuery("SELECT s FROM Student s", Student.class);
-            students = query.getResultList();
+            TypedQuery<Rating> query = getEmc().getEntityManager()
+                    .createQuery("SELECT r FROM Rating r", Rating.class);
+            ratings = query.getResultList();
         }finally {
             getEmc().getEntityManager().close();
         }
-        return students;
+        return ratings;
     }
-    public void updateStudent(Student student){
+    public void updateRating(Rating rating){
         try {
             getEmc().getEntityManager().getTransaction().begin();
-            getEmc().getEntityManager().merge(student);
+            getEmc().getEntityManager().merge(rating);
             getEmc().getEntityManager().getTransaction().commit();
         }finally {
             getEmc().getEntityManager().close();
         }
     }
-    public Student getStudentByID(UUID id){
-            return getEmc().getEntityManager().find(Student.class, id);
+    public Rating getRatingById(UUID id){
+        return getEmc().getEntityManager().find(Rating.class, id);
     }
-    public void deleteStudentById(UUID id){
-        try{
-            Student student = getStudentByID(id);
+    public void deleteRatingById(UUID id){
+        try {
+            Rating rating = getRatingById(id);
             getEmc().getEntityManager().getTransaction().begin();
-            getEmc().getEntityManager().remove(student);
+            getEmc().getEntityManager().remove(rating);
             getEmc().getEntityManager().getTransaction().commit();
         }finally {
             getEmc().getEntityManager().close();
