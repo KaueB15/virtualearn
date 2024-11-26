@@ -28,7 +28,7 @@ public class LoginDAO {
         }
     }
 
-    public List<Login> getAll(){
+    public List<Login> getAllLogins(){
         List<Login> logins = null;
         try {
             getEmc().getEntityManager().getTransaction().begin();
@@ -51,13 +51,13 @@ public class LoginDAO {
         }
     }
 
-    public Login getById(UUID id){
+    public Login getloginById(UUID id){
         return getEmc().getEntityManager().find(Login.class, id);
     }
 
-    public void deleteLogin(UUID id){
+    public void deleteLoginById(UUID id){
         try {
-            Login login = getById(id);
+            Login login = getloginById(id);
             getEmc().getEntityManager().getTransaction().begin();
             getEmc().getEntityManager().remove(id);
             getEmc().getEntityManager().getTransaction().commit();

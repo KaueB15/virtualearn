@@ -47,12 +47,12 @@ public class CourseDAO {
             getEmc().getEntityManager().close();
         }
     }
-    public Course getByID(UUID id){
+    public Course getCourseByID(UUID id){
         return getEmc().getEntityManager().find(Course.class, id);
     }
-    public void deleteById(UUID id){
+    public void deleteCourseById(UUID id){
         try{
-            Course course = getByID(id);
+            Course course = getCourseByID(id);
             getEmc().getEntityManager().getTransaction().begin();
             getEmc().getEntityManager().remove(course);
             getEmc().getEntityManager().getTransaction().commit();
