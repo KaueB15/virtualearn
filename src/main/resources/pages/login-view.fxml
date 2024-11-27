@@ -12,16 +12,16 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<StackPane styleClass="stack-bg" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.com.fafic.virtualearn.view.LoginViewController">
+<StackPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" styleClass="stack-bg" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.com.fafic.virtualearn.view.LoginViewController">
    <children>
-      <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="600.0" prefWidth="1000.0" styleClass="anchor-pane" stylesheets="@styles.css" >
+      <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="600.0" prefWidth="1000.0" styleClass="anchor-pane" stylesheets="@styles.css">
          <children>
             <ImageView fitHeight="602.0" fitWidth="430.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@imgs/VirtualLearn%20(1).png" />
                </image>
             </ImageView>
-            <TextField id="Username" fx:id="fieldUsername" layoutX="526.0" layoutY="270.0" prefHeight="25.0" prefWidth="379.0" promptText="Username" style="-fx-background-color: #555;">
+            <TextField id="Username" fx:id="fieldUsername" layoutX="526.0" layoutY="270.0" prefHeight="32.0" prefWidth="379.0" promptText="Username" style="-fx-border-color: #111;" styleClass="text-field" stylesheets="@styles.css">
                <font>
                   <Font name="Bodoni MT Bold" size="14.0" />
                </font>
@@ -29,7 +29,8 @@
                   <Insets />
                </opaqueInsets>
             </TextField>
-            <PasswordField id="password" fx:id="fieldPassword" layoutX="526.0" layoutY="345.0" prefHeight="25.0" prefWidth="379.0" promptText="Password" style="-fx-background-color: #555;">
+            <TextField fx:id="fieldPasswordShow" layoutX="527.0" layoutY="345.0" prefHeight="32.0" prefWidth="379.0" style="-fx-border-color: #111;" styleClass="text-field" stylesheets="@styles.css" />
+            <PasswordField id="password" fx:id="fieldPassword" layoutX="526.0" layoutY="345.0" prefHeight="32.0" prefWidth="379.0" promptText="Password" style="-fx-border-color: #111;" styleClass="text-field" stylesheets="@styles.css">
                <font>
                   <Font size="14.0" />
                </font>
@@ -60,22 +61,22 @@
                   <Font name="System Bold" size="16.0" />
                </font>
             </Text>
-            <ImageView fitHeight="30.0" fitWidth="32.0" layoutX="873.0" layoutY="270.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="30.0" fitWidth="45.0" layoutX="875.0" layoutY="271.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@imgs/Design%20sem%20nome%20(1).png" />
                </image>
             </ImageView>
-            <ImageView fitHeight="30.0" fitWidth="32.0" layoutX="875.0" layoutY="345.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="showPassword" fitHeight="30.0" fitWidth="32.0" layoutX="875.0" layoutY="346.0" onMouseClicked="#onShowPassword" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@imgs/Design%20sem%20nome%20(2).png" />
                </image>
             </ImageView>
-            <Button fx:id="loginButton" onAction="#loginValidate" layoutX="651.0" layoutY="417.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="110.0" style="-fx-background-color: #555;" text="Login" textAlignment="JUSTIFY" textFill="WHITE">
+            <Button fx:id="loginButton" layoutX="651.0" layoutY="417.0" mnemonicParsing="false" onAction="#onLoginButtonClick" prefHeight="25.0" prefWidth="110.0" style="-fx-background-color: #3D6297;" text="Login" textAlignment="JUSTIFY" textFill="WHITE">
                <font>
                   <Font size="22.0" />
                </font>
             </Button>
-            <Button layoutX="756.0" layoutY="501.0" mnemonicParsing="false" style="-fx-background-color: #2555;" text="Sing Up" textAlignment="JUSTIFY" textFill="#171354">
+            <Button fx:id="signupButton" layoutX="756.0" layoutY="501.0" mnemonicParsing="false" onAction="#onSignupButtonClick" style="-fx-background-color: #3D6297;" text="Sing Up" textAlignment="JUSTIFY" textFill="WHITE">
                <font>
                   <Font size="14.0" />
                </font>
