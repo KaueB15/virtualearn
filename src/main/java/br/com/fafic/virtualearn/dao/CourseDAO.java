@@ -17,31 +17,34 @@ public class CourseDAO {
     public EntityManagerConnection getEmc() {
         return emc;
     }
-    public void registerCourse(Course course){
-            getEmc().getEntityManager().getTransaction().begin();
-            getEmc().getEntityManager().persist(course);
-            getEmc().getEntityManager().getTransaction().commit();
+
+    public void registerCourse(Course course) {
+        getEmc().getEntityManager().getTransaction().begin();
+        getEmc().getEntityManager().persist(course);
+        getEmc().getEntityManager().getTransaction().commit();
     }
-    public List<Course> getAllCourses(){
-        List<Course> courses = null;
-            getEmc().getEntityManager().getTransaction().begin();
-            TypedQuery<Course> query = getEmc().getEntityManager()
-                    .createQuery("SELECT c FROM Course c", Course.class);
-            courses = query.getResultList();
-        return courses;
+
+    public List<Course> getAllCourses() {
+        getEmc().getEntityManager().getTransaction().begin();
+        TypedQuery<Course> query = getEmc().getEntityManager()
+                .createQuery("SELECT c FROM Course c", Course.class);
+        return query.getResultList();
     }
-    public void updateCourse(Course course){
-            getEmc().getEntityManager().getTransaction().begin();
-            getEmc().getEntityManager().merge(course);
-            getEmc().getEntityManager().getTransaction().commit();
+
+    public void updateCourse(Course course) {
+        getEmc().getEntityManager().getTransaction().begin();
+        getEmc().getEntityManager().merge(course);
+        getEmc().getEntityManager().getTransaction().commit();
     }
-    public Course getCourseByID(UUID id){
+
+    public Course getCourseByID(UUID id) {
         return getEmc().getEntityManager().find(Course.class, id);
     }
-    public void deleteCourseById(UUID id){
-            Course course = getCourseByID(id);
-            getEmc().getEntityManager().getTransaction().begin();
-            getEmc().getEntityManager().remove(course);
-            getEmc().getEntityManager().getTransaction().commit();
+
+    public void deleteCourseById(UUID id) {
+        Course course = getCourseByID(id);
+        getEmc().getEntityManager().getTransaction().begin();
+        getEmc().getEntityManager().remove(course);
+        getEmc().getEntityManager().getTransaction().commit();
     }
 }
