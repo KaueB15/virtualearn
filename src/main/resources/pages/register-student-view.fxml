@@ -4,24 +4,110 @@
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.com.fafic.virtualearn.view.RegisterStudenterViewController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.com.fafic.virtualearn.view.RegisterStudenterViewController">
    <children>
-      <TextField fx:id="loginField" layoutX="391.0" layoutY="91.0" />
-      <TextField fx:id="passwordField" layoutX="391.0" layoutY="138.0" />
-      <TextField fx:id="nameField" layoutX="392.0" layoutY="188.0" />
-      <TextField fx:id="cpfField" layoutX="391.0" layoutY="243.0" />
-      <DatePicker fx:id="dateField" layoutX="379.0" layoutY="300.0" />
-      <TextField fx:id="emailField" layoutX="392.0" layoutY="380.0" />
-      <TextField fx:id="phoneField" layoutX="391.0" layoutY="479.0" />
-      <Label layoutX="392.0" layoutY="68.0" text="LOGIN" />
-      <Label layoutX="392.0" layoutY="121.0" text="SENHA" />
-      <Label layoutX="393.0" layoutY="171.0" text="NOME" />
-      <Label layoutX="393.0" layoutY="226.0" text="CPF" />
-      <Label layoutX="376.0" layoutY="283.0" text="DATA" />
-      <Label layoutX="390.0" layoutY="355.0" prefHeight="17.0" prefWidth="48.0" text="EMAIL" />
-      <Label layoutX="394.0" layoutY="462.0" text="TELEFONE" />
-      <Button id="registerButton" layoutX="430.0" layoutY="533.0" mnemonicParsing="false" onAction="#registerStudent" text="Button" />
+      <TextField fx:id="loginField" layoutX="579.0" layoutY="105.0" prefHeight="30.0" prefWidth="274.0" promptText="Login">
+         <font>
+            <Font size="14.0" />
+         </font></TextField>
+      <TextField fx:id="passwordField" layoutX="579.0" layoutY="162.0" prefHeight="30.0" prefWidth="274.0" promptText="Senha">
+         <font>
+            <Font size="14.0" />
+         </font></TextField>
+      <TextField fx:id="nameField" layoutX="579.0" layoutY="219.0" prefHeight="30.0" prefWidth="274.0" promptText="Nome">
+         <font>
+            <Font size="14.0" />
+         </font></TextField>
+      <TextField fx:id="cpfField" layoutX="579.0" layoutY="275.0" prefHeight="30.0" prefWidth="274.0" promptText="CPF">
+         <font>
+            <Font size="14.0" />
+         </font></TextField>
+      <DatePicker fx:id="dateField" layoutX="579.0" layoutY="328.0" prefHeight="25.0" prefWidth="274.0" promptText="Data" />
+      <TextField fx:id="emailField" layoutX="579.0" layoutY="385.0" prefHeight="30.0" prefWidth="274.0" promptText="Email">
+         <font>
+            <Font size="14.0" />
+         </font></TextField>
+      <TextField fx:id="phoneField" layoutX="579.0" layoutY="442.0" prefHeight="30.0" prefWidth="274.0" promptText="Telefone">
+         <font>
+            <Font size="14.0" />
+         </font></TextField>
+      <Label layoutX="581.0" layoutY="80.0" text="LOGIN:">
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font></Label>
+      <Label layoutX="579.0" layoutY="137.0" text="SENHA:">
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font></Label>
+      <Label layoutX="581.0" layoutY="194.0" text="NOME:">
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font></Label>
+      <Label layoutX="582.0" layoutY="250.0" text="CPF:">
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font></Label>
+      <Label layoutX="583.0" layoutY="303.0" text="DATA:">
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font></Label>
+      <Label layoutX="579.0" layoutY="360.0" prefHeight="25.0" prefWidth="58.0" text="EMAIL:">
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font></Label>
+      <Label layoutX="582.0" layoutY="417.0" text="TELEFONE:">
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font></Label>
+      <Button id="registerButton" layoutX="628.0" layoutY="490.0" mnemonicParsing="false" onAction="#registerStudent" prefHeight="35.0" prefWidth="128.0" style="-fx-background-color: #3D6297;" text="Cadastrar" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font></Button>
+      <ImageView fitHeight="602.0" fitWidth="430.0" layoutY="-1.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@imgs/VirtuaLearn.png" />
+         </image>
+      </ImageView>
+      <Label layoutX="540.0" layoutY="552.0" text="Você já tem conta?">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Label>
+      <Button layoutX="692.0" layoutY="550.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="72.0" style="-fx-background-color: #3D6297;" text="Login" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Button>
+      <ImageView fitHeight="30.0" fitWidth="33.0" layoutX="820.0" layoutY="105.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@imgs/Design%20login.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="35.0" fitWidth="33.0" layoutX="820.0" layoutY="162.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@imgs/Design%20senha.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="30.0" fitWidth="33.0" layoutX="820.0" layoutY="219.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@imgs/Design%20Nome.png" />
+         </image></ImageView>
+      <ImageView fitHeight="30.0" fitWidth="33.0" layoutX="820.0" layoutY="275.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@imgs/Design%20CPF.png" />
+         </image></ImageView>
+      <ImageView fitHeight="30.0" fitWidth="33.0" layoutX="820.0" layoutY="385.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@imgs/Design%20Email.png" />
+         </image></ImageView>
+      <ImageView fitHeight="30.0" fitWidth="33.0" layoutX="820.0" layoutY="442.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@imgs/Design%20Telefone.png" />
+         </image></ImageView>
    </children>
 </AnchorPane>
