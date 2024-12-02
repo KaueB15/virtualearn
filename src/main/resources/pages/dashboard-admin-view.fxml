@@ -10,9 +10,9 @@
 <?import javafx.scene.text.Text?>
 
 
-<StackPane styleClass="stack-bg" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.com.fafic.virtualearn.view.DashboardAdminViewController">
+<StackPane styleClass="stack-bg" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.com.fafic.virtualearn.view.DashboardAdminViewController">
    <children>
-      <AnchorPane prefHeight="600.0" prefWidth="1000.0" styleClass="anchor-pane" stylesheets="@styles.css">
+      <AnchorPane prefHeight="600.0" prefWidth="1000.0" maxHeight="-Infinity" maxWidth="-Infinity" styleClass="anchor-pane" stylesheets="@styles.css">
          <children>
             <ImageView fitHeight="100.0" fitWidth="1000.0" pickOnBounds="true" preserveRatio="true">
                <image>
