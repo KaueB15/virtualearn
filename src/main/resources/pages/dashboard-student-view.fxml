@@ -9,7 +9,7 @@
 <?import javafx.scene.text.Font?>
 
 
-<StackPane styleClass="stack-bg" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pages.DashboardStudentView">
+<StackPane styleClass="stack-bg" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.com.fafic.virtualearn.view.DashboardStudentViewController">
    <children>
       <AnchorPane prefHeight="600.0" prefWidth="1000.0" styleClass="anchor-pane" stylesheets="@styles.css">
          <children>

@@ -44,15 +44,23 @@ public class LoginViewController {
 
         if (loginController.validateLogin(userName, password)){
             Login userAuthenticated = loginController.findByLogin(userName);
-            switch (userAuthenticated.getType()){
-                case "admin":
+            switch (userAuthenticated.getType()) {
+                case "admin" -> {
                     FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/pages/dashboard-admin-view.fxml"));
                     Parent loginRoot = fxmlLoader.load();
                     Stage stage = (Stage) signupButton.getScene().getWindow();
                     Pane mainPane = (Pane) stage.getScene().getRoot();
                     mainPane.getChildren().clear();
                     mainPane.getChildren().add(loginRoot);
-                    break;
+                }
+                case "student" -> {
+                    FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/pages/dashboard-student-view.fxml"));
+                    Parent loginRoot = fxmlLoader.load();
+                    Stage stage = (Stage) signupButton.getScene().getWindow();
+                    Pane mainPane = (Pane) stage.getScene().getRoot();
+                    mainPane.getChildren().clear();
+                    mainPane.getChildren().add(loginRoot);
+                }
             }
 
         }
@@ -65,13 +73,14 @@ public class LoginViewController {
     @FXML
     public void onShowPassword(){
         String password = fieldPassword.getText();
+        String passwordShow = fieldPasswordShow.getText();
         if (fieldPassword.isVisible()){
             fieldPassword.setVisible(false);
             fieldPasswordShow.setText(password);
             fieldPasswordShow.setVisible(true);
         }else{
             fieldPasswordShow.setVisible(false);
-            fieldPassword.setText(password);
+            fieldPassword.setText(passwordShow);
             fieldPassword.setVisible(true);
         }
     }
