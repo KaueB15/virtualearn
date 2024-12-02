@@ -70,11 +70,11 @@ public class LoginDAO {
         return count > 0;
     }
 
-    public Login findByLogin(Login login) {
+    public Login findByLogin(String login) {
         getEmc().getEntityManager().getTransaction().begin();
         TypedQuery<Login> query = getEmc().getEntityManager()
                 .createQuery("SELECT l FROM Login l WHERE l.login = :username", Login.class);
-        query.setParameter("username", login.getLogin());
+        query.setParameter("username", login);
         List<Login> resultList = query.getResultList();
         getEmc().getEntityManager().getTransaction().commit();
         if (resultList.isEmpty()) {
@@ -85,7 +85,7 @@ public class LoginDAO {
     }
 
     public void deleteLogin(Login login) {
-        Login foundLogin = findByLogin(login);
+        Login foundLogin = findByLogin(login.getLogin());
         if (foundLogin != null) {
             getEmc().getEntityManager().getTransaction().begin();
             getEmc().getEntityManager().remove(foundLogin);

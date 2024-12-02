@@ -81,6 +81,11 @@
                   <Font size="14.0" />
                </font>
             </Button>
+            <Label fx:id="loginInvalidError" layoutX="592.0" layoutY="197.0" prefHeight="30.0" prefWidth="249.0" textAlignment="CENTER" textFill="#e11111">
+               <font>
+                  <Font name="System Bold" size="20.0" />
+               </font>
+            </Label>
          </children>
       </AnchorPane>
    </children>

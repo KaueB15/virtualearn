@@ -2,6 +2,7 @@ package br.com.fafic.virtualearn.view;
 
 import br.com.fafic.virtualearn.controllers.LoginController;
 import br.com.fafic.virtualearn.dao.LoginDAO;
+import br.com.fafic.virtualearn.model.Login;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -31,18 +32,33 @@ public class LoginViewController {
     @FXML
     TextField fieldPasswordShow;
 
+    @FXML
+    Label loginInvalidError;
+
     LoginController loginController = new LoginController();
 
-    public void onLoginButtonClick(){
+    public void onLoginButtonClick() throws IOException{
 
         String userName = fieldUsername.getText();
         String password = fieldPassword.getText();
 
         if (loginController.validateLogin(userName, password)){
-            System.out.println("LOGADO");
-        }else {
-            System.out.println("NÃO DEU CERTO");
+            Login userAuthenticated = loginController.findByLogin(userName);
+            switch (userAuthenticated.getType()){
+                case "admin":
+                    FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/pages/dashboard-admin-view.fxml"));
+                    Parent loginRoot = fxmlLoader.load();
+                    Stage stage = (Stage) signupButton.getScene().getWindow();
+                    Pane mainPane = (Pane) stage.getScene().getRoot();
+                    mainPane.getChildren().clear();
+                    mainPane.getChildren().add(loginRoot);
+                    break;
+            }
+
         }
+
+        loginInvalidError.setText("Login ou Senha Invalidos");
+
 
     }
 

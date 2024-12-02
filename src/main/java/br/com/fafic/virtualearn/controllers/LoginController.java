@@ -34,4 +34,8 @@ public class LoginController {
 
     }
 
+    public Login findByLogin(String login){
+        return loginDAO.findByLogin(login);
+    }
+
 }
