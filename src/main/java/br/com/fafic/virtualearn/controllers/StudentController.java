@@ -45,9 +45,12 @@ public class StudentController {
 
             return true;
 
-        }catch (FieldIsNullException e){
+        }catch (FieldIsNullException e) {
             System.err.println(e.getMessage());
             loginDAO.deleteLogin(login);
+            return false;
+        }catch (InvalidCpfException e){
+            System.err.println(e.getMessage());
             return false;
         }catch (RuntimeException e){
             loginDAO.deleteLogin(login);
