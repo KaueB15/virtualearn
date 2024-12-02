@@ -22,7 +22,7 @@ public class StudentController {
 
     private LoginDAO loginDAO = new LoginDAO();
 
-    public void createNewStudent(String name, String email, String phoneNumber, LocalDate date, Login login, String cpf){
+    public boolean createNewStudent(String name, String email, String phoneNumber, LocalDate date, Login login, String cpf){
         try{
 
             if (fieldValidation(name, email, phoneNumber, date, cpf)){
@@ -43,12 +43,15 @@ public class StudentController {
 
             studentDAO.registerStudent(student);
 
+            return true;
+
         }catch (FieldIsNullException e){
             System.err.println(e.getMessage());
             loginDAO.deleteLogin(login);
+            return false;
         }catch (RuntimeException e){
             loginDAO.deleteLogin(login);
-            System.out.println("RUNTIME");
+            return false;
         }
     }
 
