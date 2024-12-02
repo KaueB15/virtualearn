@@ -26,12 +26,19 @@ public class RegisterCourseViewController {
     private CourseController courseController = new CourseController();
 
     @FXML
-    public void onRegisterCourseButtonClick(){
+    public void onRegisterCourseButtonClick() throws IOException{
 
         String name = fieldName.getText();
         int duration = Integer.parseInt(fieldDuration.getText());
 
         courseController.registerNewCourse(name, duration);
+
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/pages/dashboard-admin-view.fxml"));
+        Parent loginRoot = fxmlLoader.load();
+        Stage stage = (Stage) buttonBack.getScene().getWindow();
+        Pane mainPane = (Pane) stage.getScene().getRoot();
+        mainPane.getChildren().clear();
+        mainPane.getChildren().add(loginRoot);
 
     }
 
