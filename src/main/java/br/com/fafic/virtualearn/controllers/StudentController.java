@@ -3,6 +3,7 @@ package br.com.fafic.virtualearn.controllers;
 import br.com.fafic.virtualearn.dao.LoginDAO;
 import br.com.fafic.virtualearn.dao.StudentDAO;
 import br.com.fafic.virtualearn.exceptions.FieldIsNullException;
+import br.com.fafic.virtualearn.exceptions.InvalidCpfException;
 import br.com.fafic.virtualearn.exceptions.StudentNotFoundException;
 import br.com.fafic.virtualearn.model.Login;
 import br.com.fafic.virtualearn.model.Student;
@@ -26,6 +27,10 @@ public class StudentController {
 
             if (fieldValidation(name, email, phoneNumber, date, cpf)){
                 throw new FieldIsNullException();
+            }
+
+            if (cpfValidation(cpf)){
+                throw new InvalidCpfException();
             }
 
             Student student = new Student();
@@ -63,6 +68,10 @@ public class StudentController {
 
     private boolean fieldValidation(String name, String email, String phoneNumber, LocalDate date, String cpf){
         return name.isEmpty() || email.isEmpty() || phoneNumber.isEmpty() || cpf.isEmpty() || date == null;
+    }
+
+    private boolean cpfValidation(String cpf){
+        return cpf.length() < 11;
     }
 
 }
