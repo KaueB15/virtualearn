@@ -53,7 +53,7 @@ public class RegisterTeacherViewController {
         String login = fieldLogin.getText();
         String password = fieldPassword.getText();
 
-        Login userLogin = loginController.createLogin(login, password, "student");
+        Login userLogin = loginController.createLogin(login, password, "teacher");
 
         String name = fieldName.getText();
         String cpf = fieldCpf.getText();
