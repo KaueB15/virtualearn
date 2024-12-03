@@ -2,13 +2,17 @@ package br.com.fafic.virtualearn.controllers;
 
 import br.com.fafic.virtualearn.dao.LoginDAO;
 import br.com.fafic.virtualearn.dao.TeacherDAO;
+import br.com.fafic.virtualearn.exceptions.CoursesNotRegisterException;
 import br.com.fafic.virtualearn.exceptions.FieldIsNullException;
 import br.com.fafic.virtualearn.exceptions.InvalidCpfException;
+import br.com.fafic.virtualearn.exceptions.TeacherNotRegisterException;
+import br.com.fafic.virtualearn.model.Course;
 import br.com.fafic.virtualearn.model.Login;
 import br.com.fafic.virtualearn.model.Student;
 import br.com.fafic.virtualearn.model.Teacher;
 
 import java.time.LocalDate;
+import java.util.List;
 
 public class TeacherController {
 
@@ -59,6 +63,27 @@ public class TeacherController {
 
     private boolean cpfValidation(String cpf){
         return cpf.length() < 11;
+    }
+
+    public List<Teacher> getAllTeachers(){
+
+        List<Teacher> teachers = null;
+
+        try{
+
+            teachers = teacherDAO.getAllTeacher();
+
+            if(teachers.isEmpty()){
+                throw new TeacherNotRegisterException();
+            }
+
+            return teachers;
+
+        }catch (TeacherNotRegisterException e){
+            System.err.println(e.getMessage());
+            return teachers;
+        }
+
     }
 
 }

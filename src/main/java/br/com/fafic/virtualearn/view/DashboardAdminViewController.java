@@ -1,6 +1,7 @@
 package br.com.fafic.virtualearn.view;
 
 import br.com.fafic.virtualearn.controllers.CourseController;
+import br.com.fafic.virtualearn.controllers.TeacherController;
 import br.com.fafic.virtualearn.model.Course;
 import br.com.fafic.virtualearn.model.Teacher;
 import javafx.fxml.FXML;
@@ -48,6 +49,8 @@ public class DashboardAdminViewController {
 
     private CourseController courseController = new CourseController();
 
+    private TeacherController teacherController = new TeacherController();
+
     @FXML
     public void initialize(){
         courseColumn.setCellValueFactory(new PropertyValueFactory<>("name"));
@@ -62,9 +65,14 @@ public class DashboardAdminViewController {
         tableTeacher.getItems().clear();
 
         List<Course> courses = courseController.getAllCourses();
+        List<Teacher> teachers = teacherController.getAllTeachers();
 
         for (Course course : courses) {
             tableCourse.getItems().add(course);
+        }
+
+        for (Teacher teacher : teachers) {
+            tableTeacher.getItems().add(teacher);
         }
 
     }
