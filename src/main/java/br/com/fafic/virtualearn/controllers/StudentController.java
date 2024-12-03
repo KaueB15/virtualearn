@@ -50,6 +50,7 @@ public class StudentController {
             loginDAO.deleteLogin(login);
             return false;
         }catch (InvalidCpfException e){
+            loginDAO.deleteLogin(login);
             System.err.println(e.getMessage());
             return false;
         }catch (RuntimeException e){
