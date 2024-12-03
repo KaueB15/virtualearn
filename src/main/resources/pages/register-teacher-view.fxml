@@ -50,28 +50,28 @@
                   <Font name="System Bold" size="14.0" />
                </font>
             </Label>
-            <TextField fx:id="nameField" layoutX="585.0" layoutY="121.0" prefHeight="25.0" prefWidth="230.0" promptText="Nome">
+            <TextField fx:id="fieldName" layoutX="585.0" layoutY="121.0" prefHeight="25.0" prefWidth="230.0" promptText="Nome">
                <font>
                   <Font size="14.0" />
                </font>
             </TextField>
-            <TextField fx:id="emailField" layoutX="585.0" layoutY="180.0" prefHeight="25.0" prefWidth="230.0" promptText="Email">
+            <TextField fx:id="fieldEmail" layoutX="585.0" layoutY="180.0" prefHeight="25.0" prefWidth="230.0" promptText="Email">
                <font>
                   <Font size="14.0" />
                </font>
             </TextField>
-            <TextField fx:id="cpfField" layoutX="585.0" layoutY="238.0" prefHeight="25.0" prefWidth="230.0" promptText="CPF">
+            <TextField fx:id="fieldCpf" layoutX="585.0" layoutY="238.0" prefHeight="25.0" prefWidth="230.0" promptText="CPF">
                <font>
                   <Font size="14.0" />
                </font>
             </TextField>
-            <TextField fx:id="phoneNumberField" layoutX="585.0" layoutY="294.0" prefHeight="25.0" prefWidth="230.0" promptText="Telefone">
+            <TextField fx:id="fieldPhoneNumber" layoutX="585.0" layoutY="294.0" prefHeight="25.0" prefWidth="230.0" promptText="Telefone">
                <font>
                   <Font size="14.0" />
                </font>
             </TextField>
-            <DatePicker fx:id="dateOfBigthPicker" layoutX="587.0" layoutY="350.0" prefHeight="25.0" prefWidth="230.0" promptText="aaaa/mm/dd" />
-            <TextField fx:id="matterField" layoutX="587.0" layoutY="402.0" prefHeight="25.0" prefWidth="230.0" promptText="Materia">
+            <DatePicker fx:id="fieldDate" layoutX="587.0" layoutY="350.0" prefHeight="25.0" prefWidth="230.0" promptText="aaaa/mm/dd" />
+            <TextField fx:id="fieldMatter" layoutX="587.0" layoutY="402.0" prefHeight="25.0" prefWidth="230.0" promptText="Materia">
                <font>
                   <Font size="14.0" />
                </font>
