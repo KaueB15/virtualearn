@@ -8,7 +8,7 @@ import lombok.NoArgsConstructor;
 import java.util.UUID;
 
 @Entity
-@Table(name = "registration")
+@Table(name = "rating")
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
@@ -29,4 +29,8 @@ public class Rating {
     @OneToOne
     @JoinColumn(name = "idstudent")
     private Student student;
+
+    public void calculateFinalRating() {
+        this.finalRating = (r1 + r2 + r3) / 3.0;
+    }
 }
