@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -11,7 +13,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<StackPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" styleClass="stack-bg" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.com.fafic.virtualearn.view.DashboardAdminViewController">
+<StackPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" styleClass="stack-bg" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.com.fafic.virtualearn.view.EditCourseViewController">
    <children>
       <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="600.0" prefWidth="1000.0" styleClass="anchor-pane" stylesheets="@styles.css">
          <children>
@@ -20,17 +22,17 @@
                   <Image url="@imgs/Design%20de%20Users2.png" />
                </image>
             </ImageView>
-            <Button fx:id="registerCourseButton" layoutX="563.0" layoutY="33.0" mnemonicParsing="false" onAction="#onClickButtonRegisterCourse" style="-fx-background-color: #ffffff;" text="Cadastrar Curso" textFill="#3d6297">
+            <Button fx:id="registerCourseButton" layoutX="563.0" layoutY="33.0" mnemonicParsing="false" style="-fx-background-color: #ffffff;" text="Cadastrar Curso" textFill="#3d6297">
                <font>
                   <Font name="System Bold" size="16.0" />
                </font>
             </Button>
-            <Button fx:id="registerTeacherButton" layoutX="717.0" layoutY="33.0" mnemonicParsing="false" onAction="#onClickButtonRegisterTeacher" style="-fx-background-color: #ffffff;" text="Cadastra Professor" textFill="#3d6297">
+            <Button fx:id="registerTeacherButton" layoutX="717.0" layoutY="33.0" mnemonicParsing="false" style="-fx-background-color: #ffffff;" text="Cadastra Professor" textFill="#3d6297">
                <font>
                   <Font name="System Bold" size="16.0" />
                </font>
             </Button>
-            <Button fx:id="logoutButton" layoutX="888.0" layoutY="33.0" mnemonicParsing="false" onAction="#onClickButtonLogout" style="-fx-background-color: #ffffff;" text="Sair" textFill="#3d6297">
+            <Button fx:id="logoutButton" layoutX="888.0" layoutY="33.0" mnemonicParsing="false" style="-fx-background-color: #ffffff;" text="Voltar" textFill="#3d6297">
                <font>
                   <Font name="System Bold" size="16.0" />
                </font>
@@ -50,27 +52,26 @@
                   <Font name="System Bold" size="22.0" />
                </font>
             </Label>
-            <TableView fx:id="tableCourse" layoutX="32.0" layoutY="129.0" prefHeight="396.0" prefWidth="468.0">
+            <TableView layoutX="46.0" layoutY="144.0" prefHeight="381.0" prefWidth="445.0">
               <columns>
-                <TableColumn fx:id="courseColumn" prefWidth="324.0" text="Curso" />
-                  <TableColumn fx:id="durationColumn" prefWidth="143.0" text="Duração" />
+                <TableColumn prefWidth="204.0" text="Professores" />
+                  <TableColumn prefWidth="125.0" text="Formação" />
+                  <TableColumn prefWidth="115.0" text="Materia" />
               </columns>
             </TableView>
-            <TableView fx:id="tableTeacher" layoutX="512.0" layoutY="129.0" prefHeight="396.0" prefWidth="468.0">
-               <columns>
-                  <TableColumn fx:id="teacherColumn" prefWidth="467.0" text="Professores" />
-               </columns>
-            </TableView>
-            <Button fx:id="editCourseButton" onAction="#onClickEditCourseButton" layoutX="32.0" layoutY="541.0" mnemonicParsing="false" style="-fx-background-color: #ffffff;" text="EDITAR" textFill="#3d6297">
+            <TextField fx:id="fieldMatter" layoutX="531.0" layoutY="254.0" prefHeight="25.0" prefWidth="192.0" />
+            <Label layoutX="531.0" layoutY="144.0" prefHeight="17.0" prefWidth="96.0" text="Professor">
                <font>
-                  <Font name="System Bold" size="14.0" />
+                  <Font size="20.0" />
                </font>
-            </Button>
-            <Button layoutX="109.0" layoutY="541.0" mnemonicParsing="false" style="-fx-background-color: #ffffff;" text="EXCLUIR" textFill="RED">
+            </Label>
+            <ComboBox fx:id="comboboxTeacher" onShowing="#onShowingComboBoxTeacher" layoutX="531.0" layoutY="180.0" prefHeight="25.0" prefWidth="192.0" />
+            <Label layoutX="530.0" layoutY="224.0" text="Materia">
                <font>
-                  <Font name="System Bold" size="14.0" />
+                  <Font size="20.0" />
                </font>
-            </Button>
+            </Label>
+            <Button layoutX="542.0" layoutY="300.0" mnemonicParsing="false" text="Cadastrar Professor no Curso" />
          </children>
       </AnchorPane>
    </children>
