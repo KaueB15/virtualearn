@@ -4,6 +4,7 @@ import br.com.fafic.virtualearn.dao.LoginDAO;
 import br.com.fafic.virtualearn.dao.StudentDAO;
 import br.com.fafic.virtualearn.exceptions.FieldIsNullException;
 import br.com.fafic.virtualearn.exceptions.InvalidCpfException;
+import br.com.fafic.virtualearn.exceptions.InvalidPhoneNumberException;
 import br.com.fafic.virtualearn.exceptions.StudentNotFoundException;
 import br.com.fafic.virtualearn.model.Login;
 import br.com.fafic.virtualearn.model.Student;
@@ -33,6 +34,10 @@ public class StudentController {
                 throw new InvalidCpfException();
             }
 
+            if (phoneNumberValidation(phoneNumber)){
+                throw new InvalidPhoneNumberException();
+            }
+
             Student student = new Student();
             student.setName(name);
             student.setEmail(email);
@@ -49,11 +54,11 @@ public class StudentController {
             System.err.println(e.getMessage());
             loginDAO.deleteLogin(login);
             return false;
-        }catch (InvalidCpfException e){
+        }catch (InvalidCpfException | InvalidPhoneNumberException e){
             loginDAO.deleteLogin(login);
             System.err.println(e.getMessage());
             return false;
-        }catch (RuntimeException e){
+        } catch (RuntimeException e){
             loginDAO.deleteLogin(login);
             return false;
         }
@@ -79,6 +84,10 @@ public class StudentController {
 
     private boolean cpfValidation(String cpf){
         return cpf.length() < 11;
+    }
+
+    private boolean phoneNumberValidation(String phoneNumber){
+        return  phoneNumber.length() < 11;
     }
 
 }
