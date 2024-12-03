@@ -11,7 +11,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<StackPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" styleClass="stack-bg" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.com.fafic.virtualearn.view.DashboardAdminViewController">
+<StackPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" styleClass="stack-bg" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.com.fafic.virtualearn.view.DashboardAdminViewController">
    <children>
       <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="600.0" prefWidth="1000.0" styleClass="anchor-pane" stylesheets="@styles.css">
          <children>
@@ -50,17 +50,27 @@
                   <Font name="System Bold" size="22.0" />
                </font>
             </Label>
-            <TableView fx:id="tableCourse" layoutX="32.0" layoutY="129.0" prefHeight="433.0" prefWidth="468.0">
+            <TableView fx:id="tableCourse" layoutX="32.0" layoutY="129.0" prefHeight="423.0" prefWidth="468.0">
               <columns>
                 <TableColumn fx:id="courseColumn" prefWidth="324.0" text="Curso" />
                   <TableColumn fx:id="durationColumn" prefWidth="143.0" text="Duração" />
               </columns>
             </TableView>
-            <TableView fx:id="tableTeacher" layoutX="512.0" layoutY="129.0" prefHeight="433.0" prefWidth="468.0">
+            <TableView fx:id="tableTeacher" layoutX="512.0" layoutY="129.0" prefHeight="423.0" prefWidth="468.0">
                <columns>
                   <TableColumn fx:id="teacherColumn" prefWidth="467.0" text="Professores" />
                </columns>
             </TableView>
+            <Button layoutX="37.0" layoutY="556.0" mnemonicParsing="false" style="-fx-background-color: #ffffff;" text="EDITAR" textFill="#3d6297">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Button>
+            <Button layoutX="109.0" layoutY="556.0" mnemonicParsing="false" style="-fx-background-color: #ffffff;" text="EXCLUIR" textFill="RED">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Button>
          </children>
       </AnchorPane>
    </children>
