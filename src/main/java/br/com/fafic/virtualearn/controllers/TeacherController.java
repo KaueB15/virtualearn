@@ -4,6 +4,7 @@ import br.com.fafic.virtualearn.dao.LoginDAO;
 import br.com.fafic.virtualearn.dao.TeacherDAO;
 import br.com.fafic.virtualearn.exceptions.FieldIsNullException;
 import br.com.fafic.virtualearn.exceptions.InvalidCpfException;
+import br.com.fafic.virtualearn.exceptions.InvalidPhoneNumberException;
 import br.com.fafic.virtualearn.exceptions.TeacherNotRegisterException;
 import br.com.fafic.virtualearn.model.Login;
 import br.com.fafic.virtualearn.model.Teacher;
@@ -28,6 +29,9 @@ public class TeacherController {
                 throw new InvalidCpfException();
             }
 
+            if (phoneNumberValidation(phoneNumber)){
+                throw new InvalidPhoneNumberException();
+            }
             Teacher teacher = new Teacher();
             teacher.setName(name);
             teacher.setEmail(email);
@@ -45,11 +49,11 @@ public class TeacherController {
             System.err.println(e.getMessage());
             loginDAO.deleteLogin(login);
             return false;
-        }catch (InvalidCpfException e){
+        }catch (InvalidCpfException | InvalidPhoneNumberException e){
             loginDAO.deleteLogin(login);
             System.err.println(e.getMessage());
             return false;
-        }catch (RuntimeException e){
+        } catch (RuntimeException e){
             loginDAO.deleteLogin(login);
             return false;
         }
@@ -61,6 +65,10 @@ public class TeacherController {
 
     private boolean cpfValidation(String cpf){
         return cpf.length() < 11;
+    }
+
+    private boolean phoneNumberValidation(String phoneNumber){
+        return  phoneNumber.length() < 11;
     }
 
     public List<Teacher> getAllTeachers(){

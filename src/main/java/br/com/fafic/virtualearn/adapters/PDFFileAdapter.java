@@ -2,6 +2,8 @@ package br.com.fafic.virtualearn.adapters;
 
 import br.com.fafic.virtualearn.interfaces.FileProcessor;
 import br.com.fafic.virtualearn.model.Rating;
+import br.com.fafic.virtualearn.model.Student;
+import br.com.fafic.virtualearn.model.Teacher;
 import org.apache.pdfbox.pdmodel.PDDocument;
 import org.apache.pdfbox.pdmodel.PDPage;
 import org.apache.pdfbox.pdmodel.PDPageContentStream;
@@ -12,7 +14,7 @@ import java.io.IOException;
 public class PDFFileAdapter implements FileProcessor {
 
     @Override
-    public void generateFile(Rating rating, String filePath) {
+    public void generateFile(Rating rating, String filePath, Teacher teacher, Student student) {
         try (PDDocument document = new PDDocument()) {
             PDPage page = new PDPage();
             document.addPage(page);
@@ -23,8 +25,9 @@ public class PDFFileAdapter implements FileProcessor {
             contentStream.setLeading(14.5f);
             contentStream.newLineAtOffset(50, 750);
 
-            contentStream.showText("Professor:");
-            contentStream.showText("Notas do Aluno:");
+            contentStream.showText("Professor: " + teacher.getName());
+            contentStream.newLine();
+            contentStream.showText("Notas do Aluno: " + student.getName());
             contentStream.newLine();
             contentStream.showText("Nota 1: " + rating.getR1());
             contentStream.newLine();
