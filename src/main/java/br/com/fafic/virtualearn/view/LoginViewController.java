@@ -61,6 +61,14 @@ public class LoginViewController {
                     mainPane.getChildren().clear();
                     mainPane.getChildren().add(loginRoot);
                 }
+                case "teacher" -> {
+                    FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/pages/dashboard-teacher-view.fxml"));
+                    Parent loginRoot = fxmlLoader.load();
+                    Stage stage = (Stage) signupButton.getScene().getWindow();
+                    Pane mainPane = (Pane) stage.getScene().getRoot();
+                    mainPane.getChildren().clear();
+                    mainPane.getChildren().add(loginRoot);
+                }
             }
 
         }

@@ -76,7 +76,6 @@ public class LoginDAO {
                 .createQuery("SELECT l FROM Login l WHERE l.login = :username", Login.class);
         query.setParameter("username", login);
         List<Login> resultList = query.getResultList();
-        getEmc().getEntityManager().getTransaction().commit();
         if (resultList.isEmpty()) {
             return null;
         } else {
