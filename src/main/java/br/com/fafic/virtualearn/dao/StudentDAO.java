@@ -43,9 +43,8 @@ public class StudentDAO {
     }
 
     public Student findByStudent(String student) {
-        getEmc().getEntityManager().getTransaction().begin();
         TypedQuery<Student> query = getEmc().getEntityManager()
-                .createQuery("SELECT s FROM Student s WHERE s.student = :username", Student.class);
+                .createQuery("SELECT s FROM Student s WHERE s.name = :username", Student.class);
         query.setParameter("username", student);
         List<Student> resultList = query.getResultList();
         return resultList.isEmpty() ? null : resultList.get(0);
