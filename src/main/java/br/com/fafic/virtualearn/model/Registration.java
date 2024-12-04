@@ -20,9 +20,8 @@ public class Registration {
     private UUID id;
 
     @Column(nullable = false, unique = true)
-    private String registrationNumber;
+    private UUID registrationNumber;
 
-    @Column(nullable = false)
     private double rating;
 
     @Column(nullable = false)

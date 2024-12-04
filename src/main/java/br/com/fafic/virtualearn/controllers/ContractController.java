@@ -63,7 +63,7 @@ public class ContractController {
         }
     }
 
-    public Contract findByContract(String contract){
+    public Contract findByContract(UUID contract){
         try{
             Contract contracts = contractDAO.findByContract(contract);
 
