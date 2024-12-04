@@ -11,9 +11,8 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.text.Font?>
-<?import javafx.scene.text.Text?>
 
-<StackPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" styleClass="stack-bg" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.com.fafic.virtualearn.view.EditCourseViewController">
+<StackPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" styleClass="stack-bg" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.com.fafic.virtualearn.view.EditCourseViewController">
    <children>
       <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="600.0" prefWidth="1000.0" styleClass="anchor-pane" stylesheets="@styles.css">
          <children>
@@ -27,51 +26,52 @@
                   <Font name="System Bold" size="16.0" />
                </font>
             </Button>
-            <Button fx:id="registerTeacherButton" layoutX="717.0" layoutY="33.0"  mnemonicParsing="false" style="-fx-background-color: #ffffff;" text="Cadastra Professor" textFill="#3d6297">
+            <Button fx:id="registerTeacherButton" layoutX="717.0" layoutY="33.0" mnemonicParsing="false" style="-fx-background-color: #ffffff;" text="Cadastra Professor" textFill="#3d6297">
                <font>
                   <Font name="System Bold" size="16.0" />
                </font>
             </Button>
-            <Button fx:id="backButton" onAction="#onBackButtonClick" layoutX="888.0" layoutY="33.0" mnemonicParsing="false" style="-fx-background-color: #ffffff;" text="Voltar" textFill="#3d6297">
+            <Button fx:id="logoutButton" layoutX="888.0" layoutY="33.0" mnemonicParsing="false" style="-fx-background-color: #ffffff;" text="Voltar" textFill="#3d6297">
                <font>
                   <Font name="System Bold" size="16.0" />
                </font>
             </Button>
-            <Text id="welcomeText" fill="WHITE" layoutX="100.0" layoutY="42.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Seja Bem-Vindo Ao">
+            <Label fx:id="usersText" layoutX="65.0" layoutY="23.0" text="[Course]" textFill="WHITE">
                <font>
-                  <Font name="System Bold" size="22.0" />
-               </font>
-            </Text>
-            <Text fill="WHITE" layoutX="71.0" layoutY="78.0" strokeType="OUTSIDE" strokeWidth="0.0" text="VirtuaLearn!">
-               <font>
-                  <Font name="System Bold" size="26.0" />
-               </font>
-            </Text>
-            <Label fx:id="usersText" layoutX="14.0" layoutY="17.0" text="[Users]," textFill="WHITE">
-               <font>
-                  <Font name="System Bold" size="22.0" />
+                  <Font name="System Bold" size="36.0" />
                </font>
             </Label>
-            <TableView fx:id="tableTeachers" layoutX="46.0" layoutY="144.0" prefHeight="381.0" prefWidth="445.0">
+            <TableView layoutX="46.0" layoutY="144.0" prefHeight="381.0" prefWidth="445.0" style="-fx-border-color: #3D6297;">
               <columns>
-                <TableColumn fx:id="columnTeacher" prefWidth="204.0" text="Professores" />
-                  <TableColumn fx:id="columnFormed" prefWidth="125.0" text="Formação" />
-                  <TableColumn fx:id="columnMatter" prefWidth="115.0" text="Materia" />
+                <TableColumn prefWidth="204.0" style="-fx-border-color: #3D6297;" text="Professores" />
+                  <TableColumn prefWidth="125.0" style="-fx-border-color: #3D6297;" text="Formação" />
+                  <TableColumn prefWidth="111.0" style="-fx-border-color: #3D6297;" text="Materia" />
               </columns>
             </TableView>
-            <TextField fx:id="fieldMatter" layoutX="531.0" layoutY="254.0" prefHeight="25.0" prefWidth="192.0" />
-            <Label layoutX="531.0" layoutY="144.0" prefHeight="17.0" prefWidth="96.0" text="Professor">
+            <TextField fx:id="fieldMatter" layoutX="589.0" layoutY="316.0" prefHeight="30.0" prefWidth="254.0" promptText="Materia">
+               <font>
+                  <Font size="14.0" />
+               </font></TextField>
+            <Label layoutX="589.0" layoutY="227.0" prefHeight="17.0" prefWidth="96.0" text="Professor:">
                <font>
                   <Font size="20.0" />
                </font>
             </Label>
-            <ComboBox fx:id="comboboxTeacher" onShowing="#onShowingComboBoxTeacher" layoutX="531.0" layoutY="180.0" prefHeight="25.0" prefWidth="192.0" />
-            <Label layoutX="530.0" layoutY="224.0" text="Materia">
+            <ComboBox fx:id="comboboxTeacher" layoutX="589.0" layoutY="257.0" onShowing="#onShowingComboBoxTeacher" prefHeight="25.0" prefWidth="254.0" />
+            <Label layoutX="589.0" layoutY="285.0" text="Materia:">
                <font>
                   <Font size="20.0" />
                </font>
             </Label>
-            <Button layoutX="542.0" layoutY="300.0" onAction="#onClickRegisterTeacherInCourseButton" mnemonicParsing="false" text="Cadastrar Professor no Curso" />
+            <Button layoutX="621.0" layoutY="371.0" mnemonicParsing="false" style="-fx-background-color: #3D6297;" text="Cadastrar Professor no Curso" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font></Button>
+            <ImageView fitHeight="29.0" fitWidth="40.0" layoutX="810.0" layoutY="317.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@imgs/Design%20matter.png" />
+               </image>
+            </ImageView>
          </children>
       </AnchorPane>
    </children>
