@@ -2,15 +2,13 @@ package br.com.fafic.virtualearn.controllers;
 
 import br.com.fafic.virtualearn.dao.LoginDAO;
 import br.com.fafic.virtualearn.dao.TeacherDAO;
-import br.com.fafic.virtualearn.exceptions.FieldIsNullException;
-import br.com.fafic.virtualearn.exceptions.InvalidCpfException;
-import br.com.fafic.virtualearn.exceptions.InvalidPhoneNumberException;
-import br.com.fafic.virtualearn.exceptions.TeacherNotRegisterException;
+import br.com.fafic.virtualearn.exceptions.*;
 import br.com.fafic.virtualearn.model.Login;
 import br.com.fafic.virtualearn.model.Teacher;
 
 import java.time.LocalDate;
 import java.util.List;
+import java.util.UUID;
 
 public class TeacherController {
 
@@ -59,7 +57,6 @@ public class TeacherController {
         }
     }
 
-    private boolean fieldValidation(String name, String email, String phoneNumber, LocalDate date, String cpf, String matter) {
     public Teacher getTeacherById(UUID id){
         try {
             Teacher teacher = teacherDAO.getTeacherByID(id);
@@ -106,7 +103,7 @@ public class TeacherController {
         }
     }
 
-    public Teacher getTeacherByName (String name){
+    public Teacher getTeacherByName(String name) {
         try {
             Teacher teacher = teacherDAO.findByteacher(name);
 

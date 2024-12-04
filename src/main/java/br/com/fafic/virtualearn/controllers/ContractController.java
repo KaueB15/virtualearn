@@ -15,13 +15,15 @@ public class ContractController {
 
     ContractDAO contractDAO = new ContractDAO();
 
-    public void createContract(Course course, Teacher teacher, String matter){
+    public void createContract(Course course, Teacher teacher, String matter, String teacherName, String teacherFormation){
 
         Contract contract = new Contract();
 
         contract.setCourse(course);
         contract.setTeacher(teacher);
         contract.setMatter(matter);
+        contract.setTeacherName(teacherName);
+        contract.setTeacherFormation(teacherFormation);
 
         contractDAO.registerContract(contract);
     }
