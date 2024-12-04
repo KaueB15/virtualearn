@@ -37,20 +37,17 @@ public class TeacherDAO {
         getEmc().getEntityManager().getTransaction().commit();
     }
 
+
+    public Teacher getTeacherByID(UUID id) {
+        return getEmc().getEntityManager().find(Teacher.class, id);
+    }
+
     public Teacher findByteacher(String teacher) {
         TypedQuery<Teacher> query = getEmc().getEntityManager()
                 .createQuery("SELECT t FROM Teacher t WHERE t.name = :username", Teacher.class);
         query.setParameter("username", teacher);
         List<Teacher> resultList = query.getResultList();
-        if (resultList.isEmpty()) {
-            return null;
-        } else {
-            return resultList.get(0);
-        }
-    }
-
-    public Teacher getTeacherByID(UUID id) {
-        return getEmc().getEntityManager().find(Teacher.class, id);
+        return resultList.isEmpty() ? null : resultList.get(0);
     }
 
     public void deleteTeacherById(UUID id) {

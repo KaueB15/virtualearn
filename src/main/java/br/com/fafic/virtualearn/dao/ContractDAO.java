@@ -40,6 +40,15 @@ public class ContractDAO {
         return getEmc().getEntityManager().find(Contract.class, id);
     }
 
+    public Contract findByContract(String contract){
+        getEmc().getEntityManager().getTransaction().begin();
+        TypedQuery<Contract> query = getEmc().getEntityManager()
+                .createQuery("SELECT c FROM Contract c.contract = :username", Contract.class);
+        query.setParameter(":username", contract);
+        List<Contract> resultList = query.getResultList();
+        return resultList.isEmpty() ? null : resultList.get(0);
+    }
+
     public void deleteContractById(UUID id) {
         Contract contract = getContractById(id);
         getEmc().getEntityManager().getTransaction().begin();
