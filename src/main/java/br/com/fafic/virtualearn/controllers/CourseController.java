@@ -3,7 +3,6 @@ package br.com.fafic.virtualearn.controllers;
 import br.com.fafic.virtualearn.dao.CourseDAO;
 import br.com.fafic.virtualearn.exceptions.CourseNotFoundException;
 import br.com.fafic.virtualearn.exceptions.CoursesNotRegisterException;
-import br.com.fafic.virtualearn.exceptions.StudentNotFoundException;
 import br.com.fafic.virtualearn.model.Course;
 
 import java.util.List;

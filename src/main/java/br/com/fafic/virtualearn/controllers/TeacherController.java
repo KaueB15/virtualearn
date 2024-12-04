@@ -7,7 +7,6 @@ import br.com.fafic.virtualearn.model.Login;
 import br.com.fafic.virtualearn.model.Teacher;
 
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.time.Period;
 import java.util.List;
 import java.util.UUID;
@@ -120,13 +119,13 @@ public class TeacherController {
 
     }
 
-    public boolean dateValidation(LocalDateTime date) {
-        LocalDateTime now = LocalDateTime.now();
+    public boolean dateValidation(LocalDate date) {
+        LocalDate now = LocalDate.now();
         if (date.isAfter(now)) {
             return false;
         }
-        int age = Period.between(date.toLocalDate(), now.toLocalDate()).getYears();
-        return age >= 16;
+        int age = Period.between(date, now).getYears();
+        return age >= 18;
     }
 
 }

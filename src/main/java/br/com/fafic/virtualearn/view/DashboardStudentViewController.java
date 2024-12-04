@@ -35,7 +35,7 @@ public class DashboardStudentViewController {
 
 
 
-        registrationController.createRegistration();
+        //registrationController.createRegistration();
 
     }
 
