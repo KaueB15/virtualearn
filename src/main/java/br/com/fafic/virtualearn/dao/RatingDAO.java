@@ -25,7 +25,6 @@ public class RatingDAO {
     }
 
     public List<Rating> getAllRating() {
-        getEmc().getEntityManager().getTransaction().begin();
         TypedQuery<Rating> query = getEmc().getEntityManager()
                 .createQuery("SELECT r FROM Rating r", Rating.class);
         return query.getResultList();

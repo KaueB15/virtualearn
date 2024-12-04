@@ -19,7 +19,6 @@ public class RegistrationDAO {
     }
 
     public void registerRegistration(Registration registration) {
-        getEmc().getEntityManager().getTransaction().begin();
         getEmc().getEntityManager().persist(registration);
         getEmc().getEntityManager().getTransaction().commit();
     }

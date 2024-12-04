@@ -71,7 +71,6 @@ public class LoginDAO {
     }
 
     public Login findByLogin(String login) {
-        getEmc().getEntityManager().getTransaction().begin();
         TypedQuery<Login> query = getEmc().getEntityManager()
                 .createQuery("SELECT l FROM Login l WHERE l.login = :username", Login.class);
         query.setParameter("username", login);

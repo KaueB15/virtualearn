@@ -26,7 +26,6 @@ public class StudentDAO {
     }
 
     public List<Student> getAllStudents() {
-        getEmc().getEntityManager().getTransaction().begin();
         TypedQuery<Student> query = getEmc().getEntityManager()
                 .createQuery("SELECT s FROM Student s", Student.class);
         return query.getResultList();

@@ -25,7 +25,6 @@ public class CourseDAO {
     }
 
     public List<Course> getAllCourses() {
-        getEmc().getEntityManager().getTransaction().begin();
         TypedQuery<Course> query = getEmc().getEntityManager()
                 .createQuery("SELECT c FROM Course c", Course.class);
         return query.getResultList();

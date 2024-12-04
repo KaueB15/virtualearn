@@ -2,17 +2,13 @@ package br.com.fafic.virtualearn.controllers;
 
 import br.com.fafic.virtualearn.dao.LoginDAO;
 import br.com.fafic.virtualearn.dao.StudentDAO;
-import br.com.fafic.virtualearn.exceptions.FieldIsNullException;
-import br.com.fafic.virtualearn.exceptions.InvalidCpfException;
-import br.com.fafic.virtualearn.exceptions.InvalidPhoneNumberException;
-import br.com.fafic.virtualearn.exceptions.StudentNotFoundException;
+import br.com.fafic.virtualearn.exceptions.*;
 import br.com.fafic.virtualearn.model.Login;
 import br.com.fafic.virtualearn.model.Student;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.time.Period;
 import java.util.UUID;
 
@@ -39,6 +35,11 @@ public class StudentController {
                 throw new InvalidPhoneNumberException();
             }
 
+            if (!dateValidation(date)){
+                System.out.println("ERRO DATE");
+                throw new InvalidDateException();
+            }
+
             Student student = new Student();
             student.setName(name);
             student.setEmail(email);
@@ -46,6 +47,8 @@ public class StudentController {
             student.setPhoneNumber(phoneNumber);
             student.setLogin(login);
             student.setCpf(cpf);
+
+            System.out.println("CONTINUOU");
 
             studentDAO.registerStudent(student);
 
@@ -55,7 +58,7 @@ public class StudentController {
             System.err.println(e.getMessage());
             loginDAO.deleteLogin(login);
             return false;
-        }catch (InvalidCpfException | InvalidPhoneNumberException e){
+        }catch (InvalidCpfException | InvalidPhoneNumberException | InvalidDateException e){
             loginDAO.deleteLogin(login);
             System.err.println(e.getMessage());
             return false;
@@ -105,13 +108,13 @@ public class StudentController {
         return  phoneNumber.length() < 11;
     }
 
-    public boolean dateValidation(LocalDateTime date) {
-        LocalDateTime now = LocalDateTime.now();
+    public boolean dateValidation(LocalDate date) {
+        LocalDate now = LocalDate.now();
         if (date.isAfter(now)) {
             return false;
         }
-        int age = Period.between(date.toLocalDate(), now.toLocalDate()).getYears();
-        return age >= 16;
+        int age = Period.between(date, now).getYears();
+        return age >= 18;
     }
 
 }
