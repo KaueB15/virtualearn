@@ -12,6 +12,8 @@ import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.Period;
 import java.util.UUID;
 
 @NoArgsConstructor
@@ -101,6 +103,15 @@ public class StudentController {
 
     private boolean phoneNumberValidation(String phoneNumber){
         return  phoneNumber.length() < 11;
+    }
+
+    public boolean dateValidation(LocalDateTime date) {
+        LocalDateTime now = LocalDateTime.now();
+        if (date.isAfter(now)) {
+            return false;
+        }
+        int age = Period.between(date.toLocalDate(), now.toLocalDate()).getYears();
+        return age >= 16;
     }
 
 }
