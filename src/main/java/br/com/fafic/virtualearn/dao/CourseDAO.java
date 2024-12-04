@@ -41,6 +41,14 @@ public class CourseDAO {
         return getEmc().getEntityManager().find(Course.class, id);
     }
 
+    public Course findByCourse(String course) {
+        TypedQuery<Course> query = getEmc().getEntityManager()
+                .createQuery("SELECT c FROM Course c WHERE c.name = :username", Course.class);
+        query.setParameter("username", course);
+        List<Course> resultList = query.getResultList();
+        return resultList.isEmpty() ? null : resultList.get(0);
+    }
+
     public void deleteCourseById(UUID id) {
         Course course = getCourseByID(id);
         getEmc().getEntityManager().getTransaction().begin();
