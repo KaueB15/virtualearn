@@ -10,7 +10,6 @@ import br.com.fafic.virtualearn.model.Login;
 import br.com.fafic.virtualearn.model.Student;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
-import org.hibernate.exception.ConstraintViolationException;
 
 import java.time.LocalDate;
 import java.util.UUID;
@@ -72,6 +71,20 @@ public class StudentController {
                 throw new StudentNotFoundException();
             }
             return student;
+        }catch (StudentNotFoundException e){
+            System.err.println(e.getMessage());
+            return null;
+        }
+    }
+
+    public Student findByStudent(String student){
+        try{
+            Student students = studentDAO.findByStudent(student);
+
+            if (students == null){
+                throw new StudentNotFoundException();
+            }
+            return students;
         }catch (StudentNotFoundException e){
             System.err.println(e.getMessage());
             return null;

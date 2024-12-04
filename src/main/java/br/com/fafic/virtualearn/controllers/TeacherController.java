@@ -2,15 +2,13 @@ package br.com.fafic.virtualearn.controllers;
 
 import br.com.fafic.virtualearn.dao.LoginDAO;
 import br.com.fafic.virtualearn.dao.TeacherDAO;
-import br.com.fafic.virtualearn.exceptions.FieldIsNullException;
-import br.com.fafic.virtualearn.exceptions.InvalidCpfException;
-import br.com.fafic.virtualearn.exceptions.InvalidPhoneNumberException;
-import br.com.fafic.virtualearn.exceptions.TeacherNotRegisterException;
+import br.com.fafic.virtualearn.exceptions.*;
 import br.com.fafic.virtualearn.model.Login;
 import br.com.fafic.virtualearn.model.Teacher;
 
 import java.time.LocalDate;
 import java.util.List;
+import java.util.UUID;
 
 public class TeacherController {
 
@@ -56,6 +54,34 @@ public class TeacherController {
         } catch (RuntimeException e){
             loginDAO.deleteLogin(login);
             return false;
+        }
+    }
+
+    public Teacher getTeacherById(UUID id){
+        try {
+            Teacher teacher = teacherDAO.getTeacherByID(id);
+
+            if(teacher == null){
+                throw new TeacherNotFoundException();
+            }
+            return teacher;
+        }catch (TeacherNotFoundException e){
+            System.err.println(e.getMessage());
+            return null;
+        }
+    }
+
+    public Teacher findByTeacher(String teacher){
+        try{
+            Teacher teachers = teacherDAO.findByteacher(teacher);
+
+            if (teachers == null){
+                throw new TeacherNotRegisterException();
+            }
+            return teachers;
+        }catch (TeacherNotFoundException e){
+            System.err.println(e.getMessage());
+            return null;
         }
     }
 
