@@ -27,7 +27,7 @@
                   <Font name="System Bold" size="16.0" />
                </font>
             </Button>
-            <Button fx:id="registerTeacherButton" layoutX="717.0" layoutY="33.0" mnemonicParsing="false" style="-fx-background-color: #ffffff;" text="Cadastra Professor" textFill="#3d6297">
+            <Button fx:id="registerTeacherButton" layoutX="717.0" layoutY="33.0"  mnemonicParsing="false" style="-fx-background-color: #ffffff;" text="Cadastra Professor" textFill="#3d6297">
                <font>
                   <Font name="System Bold" size="16.0" />
                </font>
@@ -52,11 +52,11 @@
                   <Font name="System Bold" size="22.0" />
                </font>
             </Label>
-            <TableView layoutX="46.0" layoutY="144.0" prefHeight="381.0" prefWidth="445.0">
+            <TableView fx:id="tableTeachers" layoutX="46.0" layoutY="144.0" prefHeight="381.0" prefWidth="445.0">
               <columns>
-                <TableColumn prefWidth="204.0" text="Professores" />
-                  <TableColumn prefWidth="125.0" text="Formação" />
-                  <TableColumn prefWidth="115.0" text="Materia" />
+                <TableColumn fx:id="columnTeacher" prefWidth="204.0" text="Professores" />
+                  <TableColumn fx:id="columnFormed" prefWidth="125.0" text="Formação" />
+                  <TableColumn fx:id="columnMatter" prefWidth="115.0" text="Materia" />
               </columns>
             </TableView>
             <TextField fx:id="fieldMatter" layoutX="531.0" layoutY="254.0" prefHeight="25.0" prefWidth="192.0" />
@@ -71,7 +71,7 @@
                   <Font size="20.0" />
                </font>
             </Label>
-            <Button layoutX="542.0" layoutY="300.0" mnemonicParsing="false" text="Cadastrar Professor no Curso" />
+            <Button layoutX="542.0" layoutY="300.0" onAction="#onClickRegisterTeacherInCourseButton" mnemonicParsing="false" text="Cadastrar Professor no Curso" />
          </children>
       </AnchorPane>
    </children>

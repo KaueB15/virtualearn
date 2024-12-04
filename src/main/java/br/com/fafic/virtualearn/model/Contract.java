@@ -26,6 +26,6 @@ public class Contract {
     @JoinColumn(name = "idteacher")
     private Teacher teacher;
 
-    private String matter;
+    private String matter, teacherFormation, teacherName;
 
 }

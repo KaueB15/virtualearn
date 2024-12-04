@@ -25,7 +25,6 @@ public class ContractDAO {
     }
 
     public List<Contract> getAllContract() {
-        getEmc().getEntityManager().getTransaction().begin();
         TypedQuery<Contract> query = getEmc().getEntityManager()
                 .createQuery("SELECT c FROM Contract c", Contract.class);
         return query.getResultList();

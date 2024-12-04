@@ -26,7 +26,6 @@ public class TeacherDAO {
     }
 
     public List<Teacher> getAllTeacher() {
-        getEmc().getEntityManager().getTransaction().begin();
         TypedQuery<Teacher> query = getEmc().getEntityManager()
                 .createQuery("SELECT t FROM Teacher t", Teacher.class);
         return query.getResultList();
@@ -39,9 +38,8 @@ public class TeacherDAO {
     }
 
     public Teacher findByteacher(String teacher) {
-        getEmc().getEntityManager().getTransaction().begin();
         TypedQuery<Teacher> query = getEmc().getEntityManager()
-                .createQuery("SELECT t FROM Teacher t WHERE t.teacher = :username", Teacher.class);
+                .createQuery("SELECT t FROM Teacher t WHERE t.name = :username", Teacher.class);
         query.setParameter("username", teacher);
         List<Teacher> resultList = query.getResultList();
         if (resultList.isEmpty()) {
