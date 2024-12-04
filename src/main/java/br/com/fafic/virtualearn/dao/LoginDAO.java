@@ -76,11 +76,7 @@ public class LoginDAO {
                 .createQuery("SELECT l FROM Login l WHERE l.login = :username", Login.class);
         query.setParameter("username", login);
         List<Login> resultList = query.getResultList();
-        if (resultList.isEmpty()) {
-            return null;
-        } else {
-            return resultList.get(0);
-        }
+        return resultList.isEmpty() ? null : resultList.get(0);
     }
 
     public void deleteLogin(Login login) {

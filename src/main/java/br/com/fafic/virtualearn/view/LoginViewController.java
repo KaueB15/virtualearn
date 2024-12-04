@@ -69,6 +69,7 @@ public class LoginViewController {
                     mainPane.getChildren().clear();
                     mainPane.getChildren().add(loginRoot);
                 }
+                default -> throw new IllegalStateException("Unexpected value: " + userAuthenticated.getType());
             }
 
         }

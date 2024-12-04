@@ -10,9 +10,10 @@ import br.com.fafic.virtualearn.model.Login;
 import br.com.fafic.virtualearn.model.Student;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
-import org.hibernate.exception.ConstraintViolationException;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.Period;
 import java.util.UUID;
 
 @NoArgsConstructor
@@ -78,6 +79,20 @@ public class StudentController {
         }
     }
 
+    public Student findByStudent(String student){
+        try{
+            Student students = studentDAO.findByStudent(student);
+
+            if (students == null){
+                throw new StudentNotFoundException();
+            }
+            return students;
+        }catch (StudentNotFoundException e){
+            System.err.println(e.getMessage());
+            return null;
+        }
+    }
+
     private boolean fieldValidation(String name, String email, String phoneNumber, LocalDate date, String cpf){
         return name.isEmpty() || email.isEmpty() || phoneNumber.isEmpty() || cpf.isEmpty() || date == null;
     }
@@ -88,6 +103,15 @@ public class StudentController {
 
     private boolean phoneNumberValidation(String phoneNumber){
         return  phoneNumber.length() < 11;
+    }
+
+    public boolean dateValidation(LocalDateTime date) {
+        LocalDateTime now = LocalDateTime.now();
+        if (date.isAfter(now)) {
+            return false;
+        }
+        int age = Period.between(date.toLocalDate(), now.toLocalDate()).getYears();
+        return age >= 16;
     }
 
 }

@@ -1,5 +1,6 @@
 package br.com.fafic.virtualearn.dao;
 
+import br.com.fafic.virtualearn.model.Login;
 import br.com.fafic.virtualearn.model.Student;
 import br.com.fafic.virtualearn.persistence.EntityManagerConnection;
 import jakarta.persistence.TypedQuery;
@@ -39,6 +40,14 @@ public class StudentDAO {
 
     public Student getStudentByID(UUID id) {
         return getEmc().getEntityManager().find(Student.class, id);
+    }
+
+    public Student findByStudent(String student) {
+        TypedQuery<Student> query = getEmc().getEntityManager()
+                .createQuery("SELECT s FROM Student s WHERE s.name = :username", Student.class);
+        query.setParameter("username", student);
+        List<Student> resultList = query.getResultList();
+        return resultList.isEmpty() ? null : resultList.get(0);
     }
 
     public void deleteStudentById(UUID id) {

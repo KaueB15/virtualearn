@@ -1,6 +1,7 @@
 package br.com.fafic.virtualearn.controllers;
 
 import br.com.fafic.virtualearn.dao.LoginDAO;
+import br.com.fafic.virtualearn.exceptions.FieldIsNullException;
 import br.com.fafic.virtualearn.exceptions.LoginNotFound;
 import br.com.fafic.virtualearn.model.Login;
 
@@ -9,6 +10,11 @@ public class LoginController {
     private LoginDAO loginDAO = new LoginDAO();
 
     public Login createLogin(String userName, String password, String type){
+
+        if (fieldValidation(userName, password)){
+            throw new FieldIsNullException();
+        }
+
         Login login = new Login();
 
         login.setLogin(userName);
@@ -36,6 +42,10 @@ public class LoginController {
 
     public Login findByLogin(String login){
         return loginDAO.findByLogin(login);
+    }
+
+    public boolean fieldValidation(String userName, String passowrd){
+        return userName.isEmpty() || passowrd.isEmpty();
     }
 
 }

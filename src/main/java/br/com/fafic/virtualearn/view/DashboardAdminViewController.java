@@ -110,7 +110,7 @@ public class DashboardAdminViewController {
         Parent loginRoot = fxmlLoader.load();
 
         EditCourseViewController editCourseViewController = fxmlLoader.getController();
-        editCourseViewController.courseSelected = course;
+        editCourseViewController.setCourseSelected(course);
 
         Stage stage = (Stage) editCourseButton.getScene().getWindow();
         Pane mainPane = (Pane) stage.getScene().getRoot();
