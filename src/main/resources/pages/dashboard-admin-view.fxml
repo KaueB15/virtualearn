@@ -11,7 +11,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<StackPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" styleClass="stack-bg" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.com.fafic.virtualearn.view.DashboardAdminViewController">
+<StackPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" styleClass="stack-bg" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.com.fafic.virtualearn.view.DashboardAdminViewController">
    <children>
       <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="600.0" prefWidth="1000.0" styleClass="anchor-pane" stylesheets="@styles.css">
          <children>
@@ -20,6 +20,16 @@
                   <Image url="@imgs/Design%20de%20Users2.png" />
                </image>
             </ImageView>
+            <Button fx:id="registerCourseButton" layoutX="563.0" layoutY="33.0" mnemonicParsing="false" onAction="#onClickButtonRegisterCourse" style="-fx-background-color: #ffffff;" text="Cadastrar Curso" textFill="#3d6297">
+               <font>
+                  <Font name="System Bold" size="16.0" />
+               </font>
+            </Button>
+            <Button fx:id="registerTeacherButton" layoutX="717.0" layoutY="33.0" mnemonicParsing="false" onAction="#onClickButtonRegisterTeacher" style="-fx-background-color: #ffffff;" text="Cadastra Professor" textFill="#3d6297">
+               <font>
+                  <Font name="System Bold" size="16.0" />
+               </font>
+            </Button>
             <Button fx:id="logoutButton" layoutX="888.0" layoutY="33.0" mnemonicParsing="false" onAction="#onClickButtonLogout" style="-fx-background-color: #ffffff;" text="Sair" textFill="#3d6297">
                <font>
                   <Font name="System Bold" size="16.0" />
@@ -40,15 +50,15 @@
                   <Font name="System Bold" size="22.0" />
                </font>
             </Label>
-            <TableView fx:id="tableCourse" layoutX="32.0" layoutY="129.0" prefHeight="396.0" prefWidth="468.0">
+            <TableView fx:id="tableCourse" layoutX="32.0" layoutY="129.0" prefHeight="396.0" prefWidth="468.0" style="-fx-border-color: #3D6297;">
               <columns>
-                <TableColumn fx:id="courseColumn" prefWidth="324.0" text="Curso" />
-                  <TableColumn fx:id="durationColumn" prefWidth="143.0" text="Duração" />
+                <TableColumn fx:id="courseColumn" prefWidth="314.0" style="-fx-border-color: #3D6297;" text="Curso" />
+                  <TableColumn fx:id="durationColumn" prefWidth="149.0" style="-fx-border-color: #3D6297;" text="Duração" />
               </columns>
             </TableView>
-            <TableView fx:id="tableTeacher" layoutX="512.0" layoutY="129.0" prefHeight="396.0" prefWidth="468.0">
+            <TableView fx:id="tableTeacher" layoutX="512.0" layoutY="129.0" prefHeight="396.0" prefWidth="468.0" style="-fx-border-color: #3D6297;">
                <columns>
-                  <TableColumn fx:id="teacherColumn" prefWidth="467.0" text="Professores" />
+                  <TableColumn fx:id="teacherColumn" prefWidth="463.0" style="-fx-border-color: #3D6297;" text="Professores" />
                </columns>
             </TableView>
             <Button fx:id="editCourseButton" layoutX="32.0" layoutY="541.0" mnemonicParsing="false" onAction="#onClickEditCourseButton" style="-fx-background-color: #ffffff;" text="EDITAR" textFill="#3d6297">
