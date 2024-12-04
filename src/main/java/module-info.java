@@ -14,6 +14,7 @@ module br.com.fafic.virtualearn {
     requires jakarta.persistence;
     requires static lombok;
     requires org.hibernate.orm.core;
+    requires org.apache.pdfbox;
 
     opens br.com.fafic.virtualearn to javafx.fxml;
     exports br.com.fafic.virtualearn;
@@ -25,5 +26,7 @@ module br.com.fafic.virtualearn {
     opens br.com.fafic.virtualearn.controllers;
     exports br.com.fafic.virtualearn.view;
     opens br.com.fafic.virtualearn.view;
+    exports br.com.fafic.virtualearn.adapters;
+    opens br.com.fafic.virtualearn.adapters;
 
 }

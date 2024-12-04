@@ -42,6 +42,9 @@ public class DashboardAdminViewController {
     TableColumn<Course, Integer> durationColumn;
 
     @FXML
+    Button editCourseButton;
+
+    @FXML
     TableView<Teacher> tableTeacher;
 
     @FXML
@@ -97,6 +100,22 @@ public class DashboardAdminViewController {
 
     public void onClickButtonLogout(){
 
+    }
+
+    @FXML
+    public void onClickEditCourseButton() throws IOException{
+        Course course = tableCourse.getSelectionModel().getSelectedItem();
+
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/pages/edit-course-view.fxml"));
+        Parent loginRoot = fxmlLoader.load();
+
+        EditCourseViewController editCourseViewController = fxmlLoader.getController();
+        editCourseViewController.courseSelected = course;
+
+        Stage stage = (Stage) editCourseButton.getScene().getWindow();
+        Pane mainPane = (Pane) stage.getScene().getRoot();
+        mainPane.getChildren().clear();
+        mainPane.getChildren().add(loginRoot);
     }
 
 }
