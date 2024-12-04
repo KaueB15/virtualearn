@@ -31,7 +31,7 @@
                   <Font name="System Bold" size="16.0" />
                </font>
             </Button>
-            <Button fx:id="logoutButton" layoutX="888.0" layoutY="33.0" mnemonicParsing="false" style="-fx-background-color: #ffffff;" text="Voltar" textFill="#3d6297">
+            <Button fx:id="backButton" onAction="#onBackButtonClick" layoutX="888.0" layoutY="33.0" mnemonicParsing="false" style="-fx-background-color: #ffffff;" text="Voltar" textFill="#3d6297">
                <font>
                   <Font name="System Bold" size="16.0" />
                </font>
@@ -41,11 +41,11 @@
                   <Font name="System Bold" size="36.0" />
                </font>
             </Label>
-            <TableView layoutX="46.0" layoutY="144.0" prefHeight="381.0" prefWidth="445.0" style="-fx-border-color: #3D6297;">
+            <TableView fx:id="tableTeachers" layoutX="46.0" layoutY="144.0" prefHeight="381.0" prefWidth="445.0" style="-fx-border-color: #3D6297;">
               <columns>
-                <TableColumn prefWidth="204.0" style="-fx-border-color: #3D6297;" text="Professores" />
-                  <TableColumn prefWidth="125.0" style="-fx-border-color: #3D6297;" text="Formação" />
-                  <TableColumn prefWidth="111.0" style="-fx-border-color: #3D6297;" text="Materia" />
+                <TableColumn fx:id="columnTeacher" prefWidth="204.0" style="-fx-border-color: #3D6297;" text="Professores" />
+                  <TableColumn fx:id="columnFormed" prefWidth="125.0" style="-fx-border-color: #3D6297;" text="Formação" />
+                  <TableColumn fx:id="columnMatter" prefWidth="111.0" style="-fx-border-color: #3D6297;" text="Materia" />
               </columns>
             </TableView>
             <TextField fx:id="fieldMatter" layoutX="589.0" layoutY="316.0" prefHeight="30.0" prefWidth="254.0" promptText="Materia">
@@ -63,7 +63,7 @@
                   <Font size="20.0" />
                </font>
             </Label>
-            <Button layoutX="621.0" layoutY="371.0" mnemonicParsing="false" style="-fx-background-color: #3D6297;" text="Cadastrar Professor no Curso" textFill="WHITE">
+            <Button fx:id="registerButton" onAction="#onClickRegisterTeacherInCourseButton" layoutX="621.0" layoutY="371.0" mnemonicParsing="false" style="-fx-background-color: #3D6297;" text="Cadastrar Professor no Curso" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font></Button>

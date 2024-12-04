@@ -36,7 +36,6 @@ public class StudentController {
             }
 
             if (!dateValidation(date)){
-                System.out.println("ERRO DATE");
                 throw new InvalidDateException();
             }
 
@@ -47,8 +46,6 @@ public class StudentController {
             student.setPhoneNumber(phoneNumber);
             student.setLogin(login);
             student.setCpf(cpf);
-
-            System.out.println("CONTINUOU");
 
             studentDAO.registerStudent(student);
 

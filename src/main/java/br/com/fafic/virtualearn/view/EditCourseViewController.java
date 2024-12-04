@@ -81,8 +81,10 @@ public class EditCourseViewController {
 
         List<Teacher> teachers = teacherController.getAllTeachers();
 
-        for (Teacher teacher : teachers){
-            comboboxTeacher.getItems().add(teacher.getName());
+        if(!teachers.isEmpty()){
+            for (Teacher teacher : teachers){
+                comboboxTeacher.getItems().add(teacher.getName());
+            }
         }
     }
 
