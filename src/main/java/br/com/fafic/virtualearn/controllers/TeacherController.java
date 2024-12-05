@@ -31,6 +31,7 @@ public class TeacherController {
             if (phoneNumberValidation(phoneNumber)) {
                 throw new InvalidPhoneNumberException();
             }
+
             Teacher teacher = new Teacher();
             teacher.setName(name);
             teacher.setEmail(email);

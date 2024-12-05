@@ -39,6 +39,10 @@ public class StudentController {
                 throw new InvalidDateException();
             }
 
+            if (login == null){
+                return false;
+            }
+
             Student student = new Student();
             student.setName(name);
             student.setEmail(email);
@@ -52,14 +56,23 @@ public class StudentController {
             return true;
 
         }catch (FieldIsNullException e) {
+            if (login == null){
+                return false;
+            }
             System.err.println(e.getMessage());
             loginDAO.deleteLogin(login);
             return false;
         }catch (InvalidCpfException | InvalidPhoneNumberException | InvalidDateException e){
+            if (login == null){
+                return false;
+            }
             loginDAO.deleteLogin(login);
             System.err.println(e.getMessage());
             return false;
         } catch (RuntimeException e){
+            if (login == null){
+                return false;
+            }
             loginDAO.deleteLogin(login);
             return false;
         }
