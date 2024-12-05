@@ -51,7 +51,7 @@ public class DashboardStudentViewController {
     public void setStudentLogged(Login studentLogged) {
         this.studentLogged = studentLogged;
         studentAuthenticated = studentController.getStudentByLogin(studentLogged);
-        labelStudentName.setText(studentAuthenticated.getName() + ",");
+        labelStudentName.setText(studentAuthenticated.getName().split(" ")[0] + ",");
     }
 
     @FXML

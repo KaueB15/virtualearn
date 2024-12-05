@@ -65,7 +65,7 @@ public class DashboardTeacherViewController {
     public void setTeacherLogged(Login teacherLogged) {
         this.teacherLogged = teacherLogged;
         teacherAuthenticated = teacherController.getTeacherByLogin(teacherLogged);
-        labelTeacherName.setText(teacherAuthenticated.getName() + ",");
+        labelTeacherName.setText(teacherAuthenticated.getName().split(" ")[0] + ",");
         loadDataTable();
     }
 

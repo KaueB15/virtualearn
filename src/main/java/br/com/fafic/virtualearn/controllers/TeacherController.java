@@ -32,6 +32,10 @@ public class TeacherController {
                 throw new InvalidPhoneNumberException();
             }
 
+            if (!dateValidation(date)){
+                throw new InvalidDateException();
+            }
+
             if (login == null){
                 return false;
             }
@@ -56,7 +60,7 @@ public class TeacherController {
             System.err.println(e.getMessage());
             loginDAO.deleteLogin(login);
             return false;
-        } catch (InvalidCpfException | InvalidPhoneNumberException e) {
+        } catch (InvalidCpfException | InvalidPhoneNumberException | InvalidDateException e) {
             if (login == null){
                 return false;
             }
