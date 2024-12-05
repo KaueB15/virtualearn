@@ -1,6 +1,7 @@
 package br.com.fafic.virtualearn.controllers;
 
 import br.com.fafic.virtualearn.dao.RegistrationDAO;
+import br.com.fafic.virtualearn.exceptions.ContractNotRegisterException;
 import br.com.fafic.virtualearn.exceptions.StudentAlreadyRegisteredException;
 import br.com.fafic.virtualearn.model.*;
 
@@ -12,7 +13,7 @@ public class RegistrationController {
 
     private RegistrationDAO registrationDAO = new RegistrationDAO();
 
-    public void createRegistration(Course course, Student student, int duration){
+    public boolean createRegistration(Course course, Student student, int duration){
         try {
             if(registrationValidate(student)){
                 throw new StudentAlreadyRegisteredException();
@@ -29,8 +30,10 @@ public class RegistrationController {
             registration.setRegistrationNumber(UUID.randomUUID());
 
             registrationDAO.registerRegistration(registration);
+            return true;
         }catch (StudentAlreadyRegisteredException e){
             System.err.println(e.getMessage());
+            return false;
         }
 
 
@@ -62,6 +65,25 @@ public class RegistrationController {
             }
         }
         return false;
+    }
+
+    public List<Registration> getAllRegistration(){
+        List<Registration> registrations = null;
+
+        try {
+
+            registrations = registrationDAO.getAllRegistrations();
+
+            if (registrations.isEmpty()){
+                throw new ContractNotRegisterException();
+            }
+
+            return registrations;
+
+        }catch (ContractNotRegisterException e){
+            System.err.println(e.getMessage());
+            return registrations;
+        }
     }
 
 }

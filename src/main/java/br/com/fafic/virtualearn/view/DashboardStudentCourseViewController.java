@@ -1,19 +1,11 @@
 package br.com.fafic.virtualearn.view;
 
-import br.com.fafic.virtualearn.controllers.RatingController;
-import br.com.fafic.virtualearn.controllers.StudentController;
-import br.com.fafic.virtualearn.controllers.TeacherController;
-import br.com.fafic.virtualearn.model.Login;
-import br.com.fafic.virtualearn.model.Rating;
-import br.com.fafic.virtualearn.model.Student;
-import br.com.fafic.virtualearn.model.Teacher;
+import br.com.fafic.virtualearn.controllers.*;
+import br.com.fafic.virtualearn.model.*;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
-import javafx.scene.control.Button;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
@@ -47,6 +39,12 @@ public class DashboardStudentCourseViewController {
     @FXML
     Button logoutButton;
 
+    @FXML
+    Label labelStudentName;
+
+    @FXML
+    Label labelCourseName;
+
     protected Student studentAuthenticated;
 
     private TeacherController teacherController = new TeacherController();
@@ -55,8 +53,12 @@ public class DashboardStudentCourseViewController {
 
     private StudentController studentController = new StudentController();
 
+    private RegistrationController registrationController = new RegistrationController();
+
     public void setStudentAuthenticated(Student studentAuthenticated) {
         this.studentAuthenticated = studentAuthenticated;
+        labelStudentName.setText(studentAuthenticated.getName());
+
         loadDataTable();
     }
 
@@ -74,12 +76,20 @@ public class DashboardStudentCourseViewController {
         tableRatings.getItems().clear();
 
         List<Rating> ratings = ratingController.getAllTeachers();
+        List<Registration> registrations = registrationController.getAllRegistration();
 
         for (Rating rating : ratings) {
             if(rating.getStudent().equals(studentAuthenticated)){
                 tableRatings.getItems().add(rating);
             }
         }
+
+        for(Registration registration : registrations){
+            if(registration.getStudent().equals(studentAuthenticated)){
+                labelCourseName.setText(registration.getCourse().getName());
+            }
+        }
+
     }
 
     @FXML

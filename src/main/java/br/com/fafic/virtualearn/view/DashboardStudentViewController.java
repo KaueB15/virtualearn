@@ -9,6 +9,7 @@ import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
@@ -29,6 +30,9 @@ public class DashboardStudentViewController {
 
     @FXML
     Button buttonCourse;
+
+    @FXML
+    Label successRegisterField;
 
     protected Login studentLogged;
 
@@ -69,13 +73,17 @@ public class DashboardStudentViewController {
 
         List<Contract> contracts = contractController.getAllContracts();
 
-        registrationController.createRegistration(course, studentAuthenticated, course.getDuration());
-
-        for(Contract contract : contracts){
-            if(contract.getCourse().equals(course)){
-                ratingController.createRating(studentAuthenticated, contract);
+        if(registrationController.createRegistration(course, studentAuthenticated, course.getDuration())){
+            successRegisterField.setVisible(true);
+            for(Contract contract : contracts){
+                if(contract.getCourse().equals(course)){
+                    ratingController.createRating(studentAuthenticated, contract);
+                }
             }
         }
+
+        successRegisterField.setText("Aluno já Matriculado");
+        successRegisterField.setVisible(true);
 
     }
 

@@ -82,7 +82,6 @@ public class RegisterStudenterViewController {
 
         if(loginController.fieldValidation(login, password)){
             errorNullField.setVisible(true);
-            return;
         }
 
 
@@ -90,22 +89,18 @@ public class RegisterStudenterViewController {
 
         if(userLogin == null){
             errorLoginField.setVisible(true);
-            return;
         }
 
         if(studentController.cpfValidation(cpf)){
             errorCpfField.setVisible(true);
-            return;
         }
 
         if(studentController.phoneNumberValidation(phoneNumber)){
             errorPhoneNumberField.setVisible(true);
-            return;
         }
 
-        if(studentController.dateValidation(dateOfBirthday)){
+        if(!studentController.dateValidation(dateOfBirthday)){
             errorDateField.setVisible(true);
-            return;
         }
 
         if(studentController.createNewStudent(name, email,phoneNumber, dateOfBirthday, userLogin, cpf)){

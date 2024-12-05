@@ -117,19 +117,19 @@ public class StudentController {
         return studentDAO.findStudentByLoginId(login);
     }
 
-    private boolean fieldValidation(String name, String email, String phoneNumber, LocalDate date, String cpf){
+    public boolean fieldValidation(String name, String email, String phoneNumber, LocalDate date, String cpf){
         return name.isEmpty() || email.isEmpty() || phoneNumber.isEmpty() || cpf.isEmpty() || date == null;
     }
 
-    private boolean cpfValidation(String cpf){
+    public boolean cpfValidation(String cpf){
         return cpf.length() < 11;
     }
 
-    private boolean phoneNumberValidation(String phoneNumber){
+    public boolean phoneNumberValidation(String phoneNumber){
         return  phoneNumber.length() < 11;
     }
 
-    private boolean dateValidation(LocalDate date) {
+    public boolean dateValidation(LocalDate date) {
         LocalDate now = LocalDate.now();
         if (date.isAfter(now)) {
             return false;
