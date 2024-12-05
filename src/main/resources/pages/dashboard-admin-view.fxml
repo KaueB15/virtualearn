@@ -30,7 +30,7 @@
                   <Font name="System Bold" size="16.0" />
                </font>
             </Button>
-            <Button fx:id="logoutButton" layoutX="888.0" layoutY="33.0" mnemonicParsing="false" onAction="#onClickButtonLogout" style="-fx-background-color: #ffffff;" text="Sair" textFill="#3d6297">
+            <Button fx:id="logoutButton" layoutX="888.0" layoutY="33.0" mnemonicParsing="false" onAction="#onClickLogoutButton" style="-fx-background-color: #ffffff;" text="Sair" textFill="#3d6297">
                <font>
                   <Font name="System Bold" size="16.0" />
                </font>

@@ -101,8 +101,14 @@ public class DashboardAdminViewController {
         mainPane.getChildren().add(loginRoot);
     }
 
-    public void onClickButtonLogout(){
-
+    @FXML
+    public void onClickLogoutButton() throws IOException{
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/pages/login-view.fxml"));
+        Parent loginRoot = fxmlLoader.load();
+        Stage stage = (Stage) logoutButton.getScene().getWindow();
+        Pane mainPane = (Pane) stage.getScene().getRoot();
+        mainPane.getChildren().clear();
+        mainPane.getChildren().add(loginRoot);
     }
 
     @FXML
