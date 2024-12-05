@@ -1,17 +1,17 @@
 package br.com.fafic.virtualearn.controllers;
 
+import br.com.fafic.virtualearn.adapters.PDFFileAdapter;
 import br.com.fafic.virtualearn.dao.LoginDAO;
 import br.com.fafic.virtualearn.dao.StudentDAO;
 import br.com.fafic.virtualearn.exceptions.*;
+import br.com.fafic.virtualearn.interfaces.FileProcessor;
 import br.com.fafic.virtualearn.model.Login;
+import br.com.fafic.virtualearn.model.Rating;
 import br.com.fafic.virtualearn.model.Student;
-import br.com.fafic.virtualearn.view.RegisterStudenterViewController;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
+import br.com.fafic.virtualearn.model.Teacher;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 
-import java.io.IOException;
 import java.time.LocalDate;
 import java.time.Period;
 import java.util.UUID;
@@ -23,6 +23,8 @@ public class StudentController {
     private StudentDAO studentDAO = new StudentDAO();
 
     private LoginDAO loginDAO = new LoginDAO();
+
+    private FileProcessor pdfFileProcessor = new PDFFileAdapter();
 
     public boolean createNewStudent(String name, String email, String phoneNumber, LocalDate date, Login login, String cpf) {
 
@@ -119,21 +121,30 @@ public class StudentController {
         return name.isEmpty() || email.isEmpty() || phoneNumber.isEmpty() || cpf.isEmpty() || date == null;
     }
 
-    public boolean cpfValidation(String cpf){
+    private boolean cpfValidation(String cpf){
         return cpf.length() < 11;
     }
 
-    public boolean phoneNumberValidation(String phoneNumber){
+    private boolean phoneNumberValidation(String phoneNumber){
         return  phoneNumber.length() < 11;
     }
 
-    public boolean dateValidation(LocalDate date) {
+    private boolean dateValidation(LocalDate date) {
         LocalDate now = LocalDate.now();
         if (date.isAfter(now)) {
             return false;
         }
         int age = Period.between(date, now).getYears();
         return age >= 18;
+    }
+
+    public void generateStudentPdf(Rating rating, Teacher teacher, Student student) {
+        try {
+            pdfFileProcessor.generateFile(rating, null, teacher, student);
+            System.out.println("PDF gerado com sucesso!");
+        } catch (FieldIsNullException e) {
+            System.err.println(e.getMessage());
+        }
     }
 
 }

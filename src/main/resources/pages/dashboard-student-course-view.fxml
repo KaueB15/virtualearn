@@ -54,7 +54,7 @@
                   <TableColumn fx:id="columnRFinal" minWidth="0.0" prefWidth="81.0" text="Nota Final" />
               </columns>
             </TableView>
-            <Button layoutX="858.0" layoutY="538.0" mnemonicParsing="false" text="Gerar PDF com notas" />
+            <Button onAction="#onClickPdfGenerateButton" layoutX="858.0" layoutY="538.0" mnemonicParsing="false" text="Gerar PDF com notas" />
          </children>
       </AnchorPane>
    </children>
