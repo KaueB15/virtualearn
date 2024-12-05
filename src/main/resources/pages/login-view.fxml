@@ -12,7 +12,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<StackPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" styleClass="stack-bg" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.com.fafic.virtualearn.view.LoginViewController">
+<StackPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" styleClass="stack-bg" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.com.fafic.virtualearn.view.LoginViewController">
    <children>
       <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="600.0" prefWidth="1000.0" styleClass="anchor-pane" stylesheets="@styles.css">
          <children>
@@ -70,12 +70,12 @@
                   <Image url="@imgs/Design%20senha.png" />
                </image>
             </ImageView>
-            <Button fx:id="loginButton" layoutX="651.0" layoutY="417.0" mnemonicParsing="false" onAction="#onLoginButtonClick" prefHeight="25.0" prefWidth="110.0" style="-fx-background-color: #3D6297;" text="Login" textAlignment="JUSTIFY" textFill="WHITE">
+            <Button fx:id="loginButton" layoutX="644.0" layoutY="418.0" mnemonicParsing="false" onAction="#onLoginButtonClick" prefHeight="25.0" prefWidth="110.0" style="-fx-background-color: #3D6297; -fx-background-radius: 35;" text="Login" textAlignment="JUSTIFY" textFill="WHITE">
                <font>
                   <Font size="22.0" />
                </font>
             </Button>
-            <Button fx:id="signupButton" layoutX="756.0" layoutY="501.0" mnemonicParsing="false" onAction="#onSignupButtonClick" style="-fx-background-color: #3D6297;" text="Cadastre-se" textAlignment="JUSTIFY" textFill="WHITE">
+            <Button fx:id="signupButton" layoutX="750.0" layoutY="501.0" mnemonicParsing="false" onAction="#onSignupButtonClick" style="-fx-background-color: #3D6297; -fx-background-radius: 20;" text="Cadastre-se" textAlignment="JUSTIFY" textFill="WHITE">
                <font>
                   <Font size="14.0" />
                </font>

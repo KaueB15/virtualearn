@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.text.Font?>
 
-<StackPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" styleClass="stack-bg" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.com.fafic.virtualearn.view.EditCourseViewController">
+<StackPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" styleClass="stack-bg" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.com.fafic.virtualearn.view.EditCourseViewController">
    <children>
       <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="600.0" prefWidth="1000.0" styleClass="anchor-pane" stylesheets="@styles.css">
          <children>
@@ -21,16 +21,16 @@
                   <Image url="@imgs/Design%20de%20Users2.png" />
                </image>
             </ImageView>
-            <Button fx:id="backButton" layoutX="888.0" layoutY="33.0" mnemonicParsing="false" onAction="#onBackButtonClick" style="-fx-background-color: #ffffff;" text="Voltar" textFill="#3d6297">
+            <Button fx:id="backButton" layoutX="888.0" layoutY="33.0" mnemonicParsing="false" onAction="#onBackButtonClick" style="-fx-background-color: #ffffff; -fx-background-radius: 20;" text="Voltar" textFill="#3d6297">
                <font>
                   <Font name="System Bold" size="16.0" />
                </font>
             </Button>
-            <TableView fx:id="tableTeachers" layoutX="46.0" layoutY="144.0" prefHeight="381.0" prefWidth="445.0" style="-fx-border-color: #3D6297;">
+            <TableView fx:id="tableTeachers" layoutX="46.0" layoutY="144.0" prefHeight="381.0" prefWidth="445.0" style="-fx-border-color: #3D6297; -fx-border-width: 2;">
               <columns>
                 <TableColumn fx:id="columnTeacher" prefWidth="204.0" style="-fx-border-color: #3D6297;" text="Professores" />
                   <TableColumn fx:id="columnFormed" prefWidth="125.0" style="-fx-border-color: #3D6297;" text="Formação" />
-                  <TableColumn fx:id="columnMatter" prefWidth="111.0" style="-fx-border-color: #3D6297;" text="Materia" />
+                  <TableColumn fx:id="columnMatter" prefWidth="109.0" style="-fx-border-color: #3D6297;" text="Materia" />
               </columns>
             </TableView>
             <TextField fx:id="fieldMatter" layoutX="589.0" layoutY="316.0" prefHeight="30.0" prefWidth="254.0" promptText="Materia">
@@ -48,7 +48,7 @@
                   <Font size="20.0" />
                </font>
             </Label>
-            <Button fx:id="registerButton" layoutX="621.0" layoutY="371.0" mnemonicParsing="false" onAction="#onClickRegisterTeacherInCourseButton" style="-fx-background-color: #3D6297;" text="Cadastrar Professor no Curso" textFill="WHITE">
+            <Button fx:id="registerButton" layoutX="612.0" layoutY="372.0" mnemonicParsing="false" onAction="#onClickRegisterTeacherInCourseButton" style="-fx-background-color: #3D6297; -fx-background-radius: 20;" text="Cadastrar Professor no Curso" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font></Button>
