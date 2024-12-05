@@ -32,6 +32,10 @@ public class TeacherController {
                 throw new InvalidPhoneNumberException();
             }
 
+            if (login == null){
+                return false;
+            }
+
             Teacher teacher = new Teacher();
             teacher.setName(name);
             teacher.setEmail(email);
@@ -46,14 +50,23 @@ public class TeacherController {
             return true;
 
         } catch (FieldIsNullException e) {
+            if (login == null){
+                return false;
+            }
             System.err.println(e.getMessage());
             loginDAO.deleteLogin(login);
             return false;
         } catch (InvalidCpfException | InvalidPhoneNumberException e) {
+            if (login == null){
+                return false;
+            }
             loginDAO.deleteLogin(login);
             System.err.println(e.getMessage());
             return false;
         } catch (RuntimeException e) {
+            if (login == null){
+                return false;
+            }
             loginDAO.deleteLogin(login);
             return false;
         }
