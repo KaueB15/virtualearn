@@ -9,6 +9,7 @@ import br.com.fafic.virtualearn.model.Student;
 import br.com.fafic.virtualearn.model.Teacher;
 import javafx.fxml.FXML;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.Label;
 
 import java.util.List;
 import java.util.UUID;
@@ -17,6 +18,9 @@ public class DashboardStudentViewController {
 
     @FXML
     ComboBox<String> comboboxCourses;
+
+    @FXML
+    Label labelStudentName;
 
     protected Login studentLogged;
 
@@ -31,6 +35,7 @@ public class DashboardStudentViewController {
     public void setStudentLogged(Login studentLogged) {
         this.studentLogged = studentLogged;
         studentAuthenticated = studentController.getStudentByLogin(studentLogged);
+        labelStudentName.setText(studentAuthenticated.getName() + ",");
     }
 
     @FXML

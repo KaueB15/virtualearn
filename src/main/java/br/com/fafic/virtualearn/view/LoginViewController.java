@@ -74,7 +74,7 @@ public class LoginViewController {
                     Parent loginRoot = fxmlLoader.load();
 
                     DashboardTeacherViewController dashboardTeacherViewController = fxmlLoader.getController();
-                    dashboardTeacherViewController.teacherLogged = userAuthenticated;
+                    dashboardTeacherViewController.setTeacherLogged(userAuthenticated);
 
                     Stage stage = (Stage) signupButton.getScene().getWindow();
                     Pane mainPane = (Pane) stage.getScene().getRoot();

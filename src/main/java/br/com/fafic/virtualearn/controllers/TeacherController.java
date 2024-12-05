@@ -86,6 +86,10 @@ public class TeacherController {
         }
     }
 
+    public Teacher getTeacherByLogin(Login login){
+        return teacherDAO.findTeacherByLoginId(login);
+    }
+
     private boolean fieldValidation(String name, String email, String phoneNumber, LocalDate date, String cpf, String matter) {
         return name.isEmpty() || email.isEmpty() || phoneNumber.isEmpty() || cpf.isEmpty() || date == null || matter.isEmpty();
     }

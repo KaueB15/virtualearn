@@ -25,6 +25,9 @@ public class EditCourseViewController {
     TextField fieldMatter;
 
     @FXML
+    Label labelCourseName;
+
+    @FXML
     TableView<Contract>tableTeachers;
 
     @FXML
@@ -48,6 +51,8 @@ public class EditCourseViewController {
     public void setCourseSelected(Course courseSelected) {
         this.courseSelected = courseSelected;
         loadDataTable();
+        labelCourseName.setText(courseSelected.getName());
+
     }
 
     @FXML
@@ -97,7 +102,7 @@ public class EditCourseViewController {
 
         Teacher teacher = teacherController.getTeacherByName(teacherName);
 
-        contractController.createContract(course, teacher, matter, teacher.getMatter(), teacher.getName());
+        contractController.createContract(course, teacher, matter, teacher.getName(), teacher.getMatter());
 
     }
 
