@@ -29,7 +29,7 @@ public class Registration {
     @JoinColumn(name = "idstudent")
     private Student student;
 
-    @OneToOne
+    @ManyToOne
     @JoinColumn(name = "idcourse")
     private Course course;
 }
