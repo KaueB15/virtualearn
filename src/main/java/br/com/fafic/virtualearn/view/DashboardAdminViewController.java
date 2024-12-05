@@ -3,6 +3,7 @@ package br.com.fafic.virtualearn.view;
 import br.com.fafic.virtualearn.controllers.CourseController;
 import br.com.fafic.virtualearn.controllers.TeacherController;
 import br.com.fafic.virtualearn.model.Course;
+import br.com.fafic.virtualearn.model.Login;
 import br.com.fafic.virtualearn.model.Teacher;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -49,6 +50,8 @@ public class DashboardAdminViewController {
 
     @FXML
     TableColumn<Teacher, String> teacherColumn;
+
+    protected Login adminLogged;
 
     private CourseController courseController = new CourseController();
 

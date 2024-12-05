@@ -43,7 +43,7 @@ public class CourseController {
 
     }
 
-    public Course findByCourse(String name){
+    public Course getByCourse(String name){
         try{
             Course course = courseDAO.findByCourse(name);
 

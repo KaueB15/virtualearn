@@ -106,6 +106,10 @@ public class StudentController {
         }
     }
 
+    public Student getStudentByLogin(Login login){
+        return studentDAO.findStudentByLoginId(login);
+    }
+
     private boolean fieldValidation(String name, String email, String phoneNumber, LocalDate date, String cpf){
         return name.isEmpty() || email.isEmpty() || phoneNumber.isEmpty() || cpf.isEmpty() || date == null;
     }
@@ -118,7 +122,7 @@ public class StudentController {
         return  phoneNumber.length() < 11;
     }
 
-    public boolean dateValidation(LocalDate date) {
+    private boolean dateValidation(LocalDate date) {
         LocalDate now = LocalDate.now();
         if (date.isAfter(now)) {
             return false;

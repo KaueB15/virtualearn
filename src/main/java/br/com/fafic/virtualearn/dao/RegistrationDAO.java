@@ -19,12 +19,12 @@ public class RegistrationDAO {
     }
 
     public void registerRegistration(Registration registration) {
+        getEmc().getEntityManager().getTransaction().begin();
         getEmc().getEntityManager().persist(registration);
         getEmc().getEntityManager().getTransaction().commit();
     }
 
     public List<Registration> getAllRegistrations() {
-        getEmc().getEntityManager().getTransaction().begin();
         TypedQuery<Registration> query = getEmc().getEntityManager()
                 .createQuery("SELECT r FROM Registration r", Registration.class);
         return query.getResultList();

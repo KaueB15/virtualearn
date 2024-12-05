@@ -39,7 +39,7 @@
                   <Font name="System Bold" size="16.0" />
                </font>
             </Button>
-            <Button layoutX="416.0" layoutY="392.0" mnemonicParsing="false" prefHeight="53.0" prefWidth="168.0" style="-fx-background-color: #3D6297;" text="MATRICULAR-SE" textFill="WHITE" />
+            <Button onAction="#onRegisterButtonClick" layoutX="416.0" layoutY="392.0" mnemonicParsing="false" prefHeight="53.0" prefWidth="168.0" style="-fx-background-color: #3D6297;" text="MATRICULAR-SE" textFill="WHITE" />
             <ComboBox fx:id="comboboxCourses" layoutX="416.0" layoutY="333.0" onShowing="#onShowingComboBoxCourses" prefHeight="35.0" prefWidth="168.0" />
             <Label layoutX="416.0" layoutY="306.0" text="Cursos:">
                <font>

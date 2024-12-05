@@ -22,8 +22,6 @@ public class Registration {
     @Column(nullable = false, unique = true)
     private UUID registrationNumber;
 
-    private double rating;
-
     @Column(nullable = false)
     private LocalDate registerDay, endRegisterDay;
 

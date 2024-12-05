@@ -49,6 +49,14 @@ public class StudentDAO {
         return resultList.isEmpty() ? null : resultList.get(0);
     }
 
+    public Student findStudentByLoginId(Login id){
+        TypedQuery<Student> query = getEmc().getEntityManager()
+                .createQuery("SELECT s FROM Student s WHERE s.login = :id", Student.class);
+        query.setParameter("id", id);
+        List<Student> resultList = query.getResultList();
+        return resultList.isEmpty() ? null : resultList.get(0);
+    }
+
     public void deleteStudentById(UUID id) {
         Student student = getStudentByID(id);
         getEmc().getEntityManager().getTransaction().begin();
