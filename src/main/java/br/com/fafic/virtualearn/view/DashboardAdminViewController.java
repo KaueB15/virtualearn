@@ -1,6 +1,8 @@
 package br.com.fafic.virtualearn.view;
 
+import br.com.fafic.virtualearn.controllers.ContractController;
 import br.com.fafic.virtualearn.controllers.CourseController;
+import br.com.fafic.virtualearn.controllers.RegistrationController;
 import br.com.fafic.virtualearn.controllers.TeacherController;
 import br.com.fafic.virtualearn.model.Course;
 import br.com.fafic.virtualearn.model.Login;
@@ -57,6 +59,10 @@ public class DashboardAdminViewController {
 
     private TeacherController teacherController = new TeacherController();
 
+    private ContractController contractController = new ContractController();
+
+    private RegistrationController registrationController = new RegistrationController();
+
     @FXML
     public void initialize(){
         courseColumn.setCellValueFactory(new PropertyValueFactory<>("name"));
@@ -83,6 +89,7 @@ public class DashboardAdminViewController {
 
     }
 
+    @FXML
     public void onClickButtonRegisterTeacher() throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/pages/register-teacher-view.fxml"));
         Parent loginRoot = fxmlLoader.load();
@@ -92,6 +99,7 @@ public class DashboardAdminViewController {
         mainPane.getChildren().add(loginRoot);
     }
 
+    @FXML
     public void onClickButtonRegisterCourse() throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/pages/register-course-view.fxml"));
         Parent loginRoot = fxmlLoader.load();
@@ -99,6 +107,17 @@ public class DashboardAdminViewController {
         Pane mainPane = (Pane) stage.getScene().getRoot();
         mainPane.getChildren().clear();
         mainPane.getChildren().add(loginRoot);
+    }
+
+    @FXML
+    public void onClickDeleteCourse(){
+        Course course = tableCourse.getSelectionModel().getSelectedItem();
+
+        contractController.deleteContractByCourse(course);
+        registrationController.deleteRegistrationByCourse(course);
+        courseController.deleteCourse(course.getId());
+
+        loadDataTable();
     }
 
     @FXML

@@ -66,7 +66,7 @@
                   <Font name="System Bold" size="14.0" />
                </font>
             </Button>
-            <Button layoutX="109.0" layoutY="541.0" mnemonicParsing="false" style="-fx-background-color: #ffffff;" text="EXCLUIR" textFill="RED">
+            <Button layoutX="109.0"  onAction="#onClickDeleteCourse" layoutY="541.0" mnemonicParsing="false" style="-fx-background-color: #ffffff;" text="EXCLUIR" textFill="RED">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font>

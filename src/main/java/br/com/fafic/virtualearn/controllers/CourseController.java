@@ -6,6 +6,7 @@ import br.com.fafic.virtualearn.exceptions.CoursesNotRegisterException;
 import br.com.fafic.virtualearn.model.Course;
 
 import java.util.List;
+import java.util.UUID;
 
 public class CourseController {
 
@@ -55,6 +56,10 @@ public class CourseController {
             System.err.println(e.getMessage());
             return null;
         }
+    }
+
+    public void deleteCourse(UUID courseId){
+        courseDAO.deleteCourseById(courseId);
     }
 
 }

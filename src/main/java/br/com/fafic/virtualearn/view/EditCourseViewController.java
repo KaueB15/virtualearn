@@ -104,6 +104,8 @@ public class EditCourseViewController {
 
         contractController.createContract(course, teacher, matter, teacher.getName(), teacher.getMatter());
 
+        loadDataTable();
+
     }
 
     @FXML
