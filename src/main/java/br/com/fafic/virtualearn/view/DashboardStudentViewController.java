@@ -1,12 +1,8 @@
 package br.com.fafic.virtualearn.view;
 
-import br.com.fafic.virtualearn.controllers.CourseController;
-import br.com.fafic.virtualearn.controllers.RegistrationController;
-import br.com.fafic.virtualearn.controllers.StudentController;
-import br.com.fafic.virtualearn.model.Course;
-import br.com.fafic.virtualearn.model.Login;
-import br.com.fafic.virtualearn.model.Student;
-import br.com.fafic.virtualearn.model.Teacher;
+import br.com.fafic.virtualearn.controllers.*;
+import br.com.fafic.virtualearn.dao.ContractDAO;
+import br.com.fafic.virtualearn.model.*;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -31,6 +27,9 @@ public class DashboardStudentViewController {
     @FXML
     Button logoutButton;
 
+    @FXML
+    Button buttonCourse;
+
     protected Login studentLogged;
 
     protected Student studentAuthenticated;
@@ -40,6 +39,10 @@ public class DashboardStudentViewController {
     private RegistrationController registrationController = new RegistrationController();
 
     private StudentController studentController = new StudentController();
+
+    private RatingController ratingController = new RatingController();
+
+    private ContractController contractController = new ContractController();
 
     public void setStudentLogged(Login studentLogged) {
         this.studentLogged = studentLogged;
@@ -64,7 +67,15 @@ public class DashboardStudentViewController {
 
         Course course = courseController.getByCourse(courseName);
 
+        List<Contract> contracts = contractController.getAllContracts();
+
         registrationController.createRegistration(course, studentAuthenticated, course.getDuration());
+
+        for(Contract contract : contracts){
+            if(contract.getCourse().equals(course)){
+                ratingController.createRating(studentAuthenticated, contract);
+            }
+        }
 
     }
 
@@ -73,6 +84,20 @@ public class DashboardStudentViewController {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/pages/login-view.fxml"));
         Parent loginRoot = fxmlLoader.load();
         Stage stage = (Stage) logoutButton.getScene().getWindow();
+        Pane mainPane = (Pane) stage.getScene().getRoot();
+        mainPane.getChildren().clear();
+        mainPane.getChildren().add(loginRoot);
+    }
+
+    @FXML
+    public void onCourseButtonClick() throws IOException{
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/pages/dashboard-student-course-view.fxml"));
+        Parent loginRoot = fxmlLoader.load();
+
+        DashboardStudentCourseViewController dashboardStudentCourseViewController = fxmlLoader.getController();
+        dashboardStudentCourseViewController.setStudentAuthenticated(studentAuthenticated);
+
+        Stage stage = (Stage) buttonCourse.getScene().getWindow();
         Pane mainPane = (Pane) stage.getScene().getRoot();
         mainPane.getChildren().clear();
         mainPane.getChildren().add(loginRoot);

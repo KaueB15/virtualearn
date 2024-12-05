@@ -34,7 +34,7 @@
                   <Font name="System Bold" size="26.0" />
                </font>
             </Label>
-            <Button fx:id="logoutButton" onAction="#onClickLogoutButton" layoutX="903.0" layoutY="33.0" mnemonicParsing="false" text="Sair" textFill="#3d6297">
+            <Button fx:id="logoutButton" layoutX="903.0" layoutY="33.0" mnemonicParsing="false" onAction="#onClickLogoutButton" text="Sair" textFill="#3d6297">
                <font>
                   <Font name="System Bold" size="16.0" />
                </font>
@@ -56,6 +56,11 @@
                   <Font size="25.0" />
                </font>
             </Text>
+            <Button fx:id="buttonCourse" onAction="#onCourseButtonClick" layoutX="794.0" layoutY="33.0" mnemonicParsing="false"  prefHeight="35.0" prefWidth="96.0" text="Curso" textFill="#3d6297">
+               <font>
+                  <Font name="System Bold" size="16.0" />
+               </font>
+            </Button>
          </children>
       </AnchorPane>
    </children>
