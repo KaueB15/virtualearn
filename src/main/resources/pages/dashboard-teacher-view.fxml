@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.text.Font?>
 
-<StackPane styleClass="stack-bg" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.com.fafic.virtualearn.view.DashboardTeacherViewController">
+<StackPane styleClass="stack-bg" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.com.fafic.virtualearn.view.DashboardTeacherViewController">
    <children>
       <AnchorPane prefHeight="600.0" prefWidth="1000.0" styleClass="anchor-pane" stylesheets="@styles.css">
          <children>
@@ -35,28 +35,40 @@
                   <Font name="System Bold" size="26.0" />
                </font>
             </Label>
-            <Button fx:id="logoutButton" layoutX="907.0" layoutY="29.0" mnemonicParsing="false" onAction="#onClickLogoutButton" text="Sair" textFill="#3d6297">
+            <Button fx:id="logoutButton" layoutX="907.0" layoutY="29.0" mnemonicParsing="false" onAction="#onClickLogoutButton" style="-fx-background-radius: 20;" text="Sair" textFill="#3d6297">
                <font>
                   <Font name="System Bold" size="16.0" />
                </font>
             </Button>
-            <TableView fx:id="tableRatings" layoutX="26.0" layoutY="125.0" prefHeight="432.0" prefWidth="733.0">
+            <TableView fx:id="tableRatings" layoutX="26.0" layoutY="125.0" prefHeight="432.0" prefWidth="733.0" style="-fx-border-color: #3D6297; -fx-border-width: 2;">
               <columns>
-                <TableColumn fx:id="columnStudent" prefWidth="214.0" text="Aluno" />
-                  <TableColumn fx:id="columnMatter" prefWidth="214.0" text="Materia" />
-                <TableColumn fx:id="columnR1" prefWidth="76.0" text="Nota 1" />
-                  <TableColumn fx:id="columnR2" prefWidth="76.0" text="Nota 2" />
-                  <TableColumn fx:id="columnR3" prefWidth="76.0" text="Nota 3" />
-                  <TableColumn fx:id="columnRFinal" prefWidth="76.0" text="Media" />
+                <TableColumn fx:id="columnStudent" prefWidth="214.0" style="-fx-border-color: #3D6297;" text="Aluno" />
+                  <TableColumn fx:id="columnMatter" prefWidth="214.0" style="-fx-border-color: #3D6297;" text="Materia" />
+                <TableColumn fx:id="columnR1" prefWidth="76.0" style="-fx-border-color: #3D6297;" text="Nota 1" />
+                  <TableColumn fx:id="columnR2" prefWidth="76.0" style="-fx-border-color: #3D6297;" text="Nota 2" />
+                  <TableColumn fx:id="columnR3" prefWidth="76.0" style="-fx-border-color: #3D6297;" text="Nota 3" />
+                  <TableColumn fx:id="columnRFinal" prefWidth="70.0" style="-fx-border-color: #3D6297;" text="Media" />
               </columns>
             </TableView>
-            <Button onAction="#onEditRatingsButtonClick" layoutX="826.0" layoutY="367.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="126.0" text="Editar Notas" />
-            <TextField fx:id="fieldRating1" layoutX="815.0" layoutY="157.0" />
-            <TextField fx:id="fieldRating2" layoutX="815.0" layoutY="233.0" />
-            <TextField fx:id="fieldRating3" layoutX="815.0" layoutY="316.0" />
-            <Label layoutX="815.0" layoutY="125.0" text="Nota 1" />
-            <Label layoutX="815.0" layoutY="202.0" text="Nota 2" />
-            <Label layoutX="815.0" layoutY="283.0" text="Nota 3" />
+            <Button layoutX="826.0" layoutY="358.0" mnemonicParsing="false" onAction="#onEditRatingsButtonClick" prefHeight="32.0" prefWidth="126.0" style="-fx-background-color: #3D6297; -fx-background-radius: 20;" text="Editar Notas" textFill="WHITE">
+               <font>
+                  <Font size="14.0" />
+               </font></Button>
+            <TextField fx:id="fieldRating1" layoutX="809.0" layoutY="200.0" promptText="Nota 1" />
+            <TextField fx:id="fieldRating2" layoutX="809.0" layoutY="255.0" promptText="Nota 2" />
+            <TextField fx:id="fieldRating3" layoutX="809.0" layoutY="310.0" promptText="Nota 3" />
+            <Label layoutX="809.0" layoutY="180.0" text="Nota 1:">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font></Label>
+            <Label layoutX="809.0" layoutY="235.0" text="Nota 2:">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font></Label>
+            <Label layoutX="809.0" layoutY="290.0" text="Nota 3:">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font></Label>
          </children>
       </AnchorPane>
    </children>
