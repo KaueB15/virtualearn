@@ -44,7 +44,7 @@
                   <Font name="System Bold" size="16.0" />
                </font>
             </Label>
-            <Button layoutX="661.0" layoutY="413.0" mnemonicParsing="false" onAction="#onRegisterCourseButtonClick" style="-fx-background-color: #3D6297;" text="Cadastrar" textFill="WHITE">
+            <Button layoutX="648.0" layoutY="412.0" mnemonicParsing="false" onAction="#onRegisterCourseButtonClick" style="-fx-background-color: #3D6297; -fx-background-radius: 20;" text="Cadastrar" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="16.0" />
                </font>
@@ -52,7 +52,7 @@
                   <Insets />
                </opaqueInsets>
             </Button>
-            <Button fx:id="buttonBack" layoutX="730.0" layoutY="510.0" mnemonicParsing="false" onAction="#onBackButtonClick" style="-fx-background-color: #3D6297;" text="Voltar" textFill="WHITE">
+            <Button fx:id="buttonBack" layoutX="724.0" layoutY="511.0" mnemonicParsing="false" onAction="#onBackButtonClick" style="-fx-background-color: #3D6297; -fx-background-radius: 20;" text="Voltar" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font>
