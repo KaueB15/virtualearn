@@ -1,6 +1,7 @@
 package br.com.fafic.virtualearn.view;
 
 import br.com.fafic.virtualearn.controllers.RatingController;
+import br.com.fafic.virtualearn.controllers.StudentController;
 import br.com.fafic.virtualearn.controllers.TeacherController;
 import br.com.fafic.virtualearn.model.Login;
 import br.com.fafic.virtualearn.model.Rating;
@@ -52,6 +53,8 @@ public class DashboardStudentCourseViewController {
 
     private RatingController ratingController = new RatingController();
 
+    private StudentController studentController = new StudentController();
+
     public void setStudentAuthenticated(Student studentAuthenticated) {
         this.studentAuthenticated = studentAuthenticated;
         loadDataTable();
@@ -87,5 +90,15 @@ public class DashboardStudentCourseViewController {
         Pane mainPane = (Pane) stage.getScene().getRoot();
         mainPane.getChildren().clear();
         mainPane.getChildren().add(loginRoot);
+    }
+
+    @FXML
+    public void onClickPdfGenerateButton(){
+        List<Rating> ratings = ratingController.getAllTeachers();
+        for (Rating rating : ratings){
+            if (rating.getStudent().equals(studentAuthenticated)){
+                studentController.generateStudentPdf(rating, rating.getTeacher(), rating.getStudent());
+            }
+        }
     }
 }

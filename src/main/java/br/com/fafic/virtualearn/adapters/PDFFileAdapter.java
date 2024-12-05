@@ -24,7 +24,9 @@ public class PDFFileAdapter implements FileProcessor {
                 throw new IOException("Não foi possível criar o diretório de Downloads.");
             }
 
-            filePath = downloadsPath + File.separator + "Relatorio-Avaliacao-" + student.getName().replaceAll("\\s+", "_") + ".pdf";
+            filePath = downloadsPath + File.separator + "Relatorio-Avaliacao-" +
+                    student.getName().replaceAll("\\s+", "_") + rating.getMatter()
+                    + ".pdf";
 
             try (PDDocument document = new PDDocument()) {
                 PDPage page = new PDPage();
@@ -32,7 +34,7 @@ public class PDFFileAdapter implements FileProcessor {
 
                 PDPageContentStream contentStream = new PDPageContentStream(document, page);
                 contentStream.beginText();
-                contentStream.setFont(PDType1Font.HELVETICA, 32);
+                contentStream.setFont(PDType1Font.HELVETICA, 12);
                 contentStream.setLeading(14.5f);
                 contentStream.newLineAtOffset(50, 750);
 
