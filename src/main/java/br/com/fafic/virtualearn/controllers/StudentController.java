@@ -1,10 +1,14 @@
 package br.com.fafic.virtualearn.controllers;
 
+import br.com.fafic.virtualearn.adapters.PDFFileAdapter;
 import br.com.fafic.virtualearn.dao.LoginDAO;
 import br.com.fafic.virtualearn.dao.StudentDAO;
 import br.com.fafic.virtualearn.exceptions.*;
+import br.com.fafic.virtualearn.interfaces.FileProcessor;
 import br.com.fafic.virtualearn.model.Login;
+import br.com.fafic.virtualearn.model.Rating;
 import br.com.fafic.virtualearn.model.Student;
+import br.com.fafic.virtualearn.model.Teacher;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 
@@ -19,6 +23,8 @@ public class StudentController {
     private StudentDAO studentDAO = new StudentDAO();
 
     private LoginDAO loginDAO = new LoginDAO();
+
+    private FileProcessor pdfFileProcessor = new PDFFileAdapter();
 
     public boolean createNewStudent(String name, String email, String phoneNumber, LocalDate date, Login login, String cpf){
         try{
@@ -115,6 +121,15 @@ public class StudentController {
         }
         int age = Period.between(date, now).getYears();
         return age >= 18;
+    }
+
+    public void generateStudentPdf(Rating rating, Teacher teacher, Student student) {
+        try {
+            pdfFileProcessor.generateFile(rating, null, teacher, student);
+            System.out.println("PDF gerado com sucesso!");
+        } catch (FieldIsNullException e) {
+            System.err.println(e.getMessage());
+        }
     }
 
 }
