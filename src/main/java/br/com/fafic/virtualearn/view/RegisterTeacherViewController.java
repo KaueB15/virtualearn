@@ -44,6 +44,9 @@ public class RegisterTeacherViewController {
     @FXML
     Button registerTeacherButton;
 
+    @FXML
+    Button backButton;
+
     TeacherController teacherController = new TeacherController();
 
     LoginController loginController = new LoginController();
@@ -71,6 +74,16 @@ public class RegisterTeacherViewController {
             mainPane.getChildren().add(loginRoot);
         }
 
+    }
+
+    @FXML
+    public void onBackButtonClick() throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/pages/dashboard-admin-view.fxml"));
+        Parent loginRoot = fxmlLoader.load();
+        Stage stage = (Stage) backButton.getScene().getWindow();
+        Pane mainPane = (Pane) stage.getScene().getRoot();
+        mainPane.getChildren().clear();
+        mainPane.getChildren().add(loginRoot);
     }
 
 }
