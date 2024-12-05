@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.text.Font?>
 
-<StackPane styleClass="stack-bg" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.com.fafic.virtualearn.view.DashboardStudentCourseViewController">
+<StackPane styleClass="stack-bg" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.com.fafic.virtualearn.view.DashboardStudentCourseViewController">
    <children>
       <AnchorPane prefHeight="600.0" prefWidth="1000.0" styleClass="anchor-pane" stylesheets="@styles.css">
          <children>
@@ -19,42 +19,35 @@
                   <Image url="@imgs/Design%20de%20Users2.png" />
                </image>
             </ImageView>
-            <Label fx:id="labelStudentName" layoutX="23.0" layoutY="14.0" text="[Student]," textFill="WHITE">
+            <Label fx:id="labelStudentName" layoutX="35.0" layoutY="31.0" text="[Student]" textFill="WHITE">
                <font>
-                  <Font name="System Bold" size="22.0" />
+                  <Font name="System Bold" size="28.0" />
                </font>
             </Label>
-            <Label layoutX="133.0" layoutY="14.0" text="Seja Bem-Vindo Ao" textFill="WHITE">
-               <font>
-                  <Font name="System Bold" size="22.0" />
-               </font>
-            </Label>
-            <Label layoutX="88.0" layoutY="50.0" text="VirtuaLearn!" textFill="WHITE">
-               <font>
-                  <Font name="System Bold" size="26.0" />
-               </font>
-            </Label>
-            <Button fx:id="logoutButton" onAction="#onClickLogoutButton" layoutX="903.0" layoutY="33.0" mnemonicParsing="false" text="Sair" textFill="#3d6297">
+            <Button fx:id="logoutButton" layoutX="903.0" layoutY="33.0" mnemonicParsing="false" onAction="#onClickLogoutButton" style="-fx-background-radius: 20;" text="Sair" textFill="#3d6297">
                <font>
                   <Font name="System Bold" size="16.0" />
                </font>
             </Button>
-            <Label fx:id="labelStudentName1" layoutX="427.0" layoutY="35.0" text="[Curso]," textFill="WHITE">
+            <Label fx:id="labelStudentName1" layoutX="397.0" layoutY="33.0" text="[Curso]" textFill="WHITE">
                <font>
-                  <Font name="System Bold" size="22.0" />
+                  <Font name="System Bold" size="30.0" />
                </font>
             </Label>
-            <TableView fx:id="tableRatings" layoutX="35.0" layoutY="133.0" prefHeight="430.0" prefWidth="784.0">
+            <TableView fx:id="tableRatings" layoutX="35.0" layoutY="133.0" prefHeight="430.0" prefWidth="784.0" style="-fx-border-color: #3D6297; -fx-border-width: 2;">
               <columns>
-                <TableColumn fx:id="columnTeacher" prefWidth="227.0" text="Professor" />
-                <TableColumn fx:id="columnMatter" minWidth="0.0" prefWidth="232.0" text="Materia" />
-                  <TableColumn fx:id="columnR1" minWidth="0.0" prefWidth="81.0" text="Nota 1" />
-                  <TableColumn fx:id="columnR2" minWidth="0.0" prefWidth="81.0" text="Nota 2" />
-                  <TableColumn fx:id="columnR3" minWidth="0.0" prefWidth="81.0" text="Nota 3" />
-                  <TableColumn fx:id="columnRFinal" minWidth="0.0" prefWidth="81.0" text="Nota Final" />
+                <TableColumn fx:id="columnTeacher" prefWidth="227.0" style="-fx-border-color: #3D6297;" text="Professor" />
+                <TableColumn fx:id="columnMatter" minWidth="0.0" prefWidth="232.0" style="-fx-border-color: #3D6297;" text="Materia" />
+                  <TableColumn fx:id="columnR1" minWidth="0.0" prefWidth="81.0" style="-fx-border-color: #3D6297;" text="Nota 1" />
+                  <TableColumn fx:id="columnR2" minWidth="0.0" prefWidth="81.0" style="-fx-border-color: #3D6297;" text="Nota 2" />
+                  <TableColumn fx:id="columnR3" minWidth="0.0" prefWidth="81.0" style="-fx-border-color: #3D6297;" text="Nota 3" />
+                  <TableColumn fx:id="columnRFinal" minWidth="0.0" prefWidth="76.0" style="-fx-border-color: #3D6297;" text="Nota Final" />
               </columns>
             </TableView>
-            <Button layoutX="858.0" layoutY="538.0" mnemonicParsing="false" text="Gerar PDF com notas" />
+            <Button layoutX="825.0" layoutY="523.0" mnemonicParsing="false" style="-fx-background-color: #3D6297; -fx-background-radius: 20;" text="Gerar PDF com notas" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font></Button>
          </children>
       </AnchorPane>
    </children>
