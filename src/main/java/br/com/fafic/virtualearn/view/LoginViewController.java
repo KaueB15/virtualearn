@@ -48,6 +48,10 @@ public class LoginViewController {
                 case "admin" -> {
                     FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/pages/dashboard-admin-view.fxml"));
                     Parent loginRoot = fxmlLoader.load();
+
+                    DashboardAdminViewController dashboardAdminViewController = fxmlLoader.getController();
+                    dashboardAdminViewController.adminLogged = userAuthenticated;
+
                     Stage stage = (Stage) signupButton.getScene().getWindow();
                     Pane mainPane = (Pane) stage.getScene().getRoot();
                     mainPane.getChildren().clear();
@@ -56,6 +60,10 @@ public class LoginViewController {
                 case "student" -> {
                     FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/pages/dashboard-student-view.fxml"));
                     Parent loginRoot = fxmlLoader.load();
+
+                    DashboardStudentViewController dashboardStudentViewController = fxmlLoader.getController();
+                    dashboardStudentViewController.setStudentLogged(userAuthenticated);
+
                     Stage stage = (Stage) signupButton.getScene().getWindow();
                     Pane mainPane = (Pane) stage.getScene().getRoot();
                     mainPane.getChildren().clear();
@@ -64,6 +72,10 @@ public class LoginViewController {
                 case "teacher" -> {
                     FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/pages/dashboard-teacher-view.fxml"));
                     Parent loginRoot = fxmlLoader.load();
+
+                    DashboardTeacherViewController dashboardTeacherViewController = fxmlLoader.getController();
+                    dashboardTeacherViewController.setTeacherLogged(userAuthenticated);
+
                     Stage stage = (Stage) signupButton.getScene().getWindow();
                     Pane mainPane = (Pane) stage.getScene().getRoot();
                     mainPane.getChildren().clear();

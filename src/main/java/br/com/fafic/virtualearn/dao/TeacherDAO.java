@@ -1,6 +1,7 @@
 package br.com.fafic.virtualearn.dao;
 
 import br.com.fafic.virtualearn.model.Login;
+import br.com.fafic.virtualearn.model.Student;
 import br.com.fafic.virtualearn.model.Teacher;
 import br.com.fafic.virtualearn.persistence.EntityManagerConnection;
 import jakarta.persistence.TypedQuery;
@@ -46,6 +47,14 @@ public class TeacherDAO {
         TypedQuery<Teacher> query = getEmc().getEntityManager()
                 .createQuery("SELECT t FROM Teacher t WHERE t.name = :username", Teacher.class);
         query.setParameter("username", teacher);
+        List<Teacher> resultList = query.getResultList();
+        return resultList.isEmpty() ? null : resultList.get(0);
+    }
+
+    public Teacher findTeacherByLoginId(Login id){
+        TypedQuery<Teacher> query = getEmc().getEntityManager()
+                .createQuery("SELECT t FROM Teacher t WHERE t.login = :id", Teacher.class);
+        query.setParameter("id", id);
         List<Teacher> resultList = query.getResultList();
         return resultList.isEmpty() ? null : resultList.get(0);
     }

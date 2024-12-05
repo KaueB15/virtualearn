@@ -42,8 +42,11 @@ public class StudentController {
             }
 
             if (!dateValidation(date)){
-                System.out.println("ERRO DATE");
                 throw new InvalidDateException();
+            }
+
+            if (login == null){
+                return false;
             }
 
             Student student = new Student();
@@ -54,21 +57,28 @@ public class StudentController {
             student.setLogin(login);
             student.setCpf(cpf);
 
-            System.out.println("CONTINUOU");
-
             studentDAO.registerStudent(student);
 
             return true;
 
         }catch (FieldIsNullException e) {
+            if (login == null){
+                return false;
+            }
             System.err.println(e.getMessage());
             loginDAO.deleteLogin(login);
             return false;
         }catch (InvalidCpfException | InvalidPhoneNumberException | InvalidDateException e){
+            if (login == null){
+                return false;
+            }
             loginDAO.deleteLogin(login);
             System.err.println(e.getMessage());
             return false;
         } catch (RuntimeException e){
+            if (login == null){
+                return false;
+            }
             loginDAO.deleteLogin(login);
             return false;
         }
@@ -102,6 +112,10 @@ public class StudentController {
         }
     }
 
+    public Student getStudentByLogin(Login login){
+        return studentDAO.findStudentByLoginId(login);
+    }
+
     private boolean fieldValidation(String name, String email, String phoneNumber, LocalDate date, String cpf){
         return name.isEmpty() || email.isEmpty() || phoneNumber.isEmpty() || cpf.isEmpty() || date == null;
     }
@@ -114,7 +128,7 @@ public class StudentController {
         return  phoneNumber.length() < 11;
     }
 
-    public boolean dateValidation(LocalDate date) {
+    private boolean dateValidation(LocalDate date) {
         LocalDate now = LocalDate.now();
         if (date.isAfter(now)) {
             return false;

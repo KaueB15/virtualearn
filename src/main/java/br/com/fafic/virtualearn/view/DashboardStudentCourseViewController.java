@@ -4,11 +4,15 @@ import br.com.fafic.virtualearn.controllers.RatingController;
 import br.com.fafic.virtualearn.controllers.TeacherController;
 import br.com.fafic.virtualearn.model.Login;
 import br.com.fafic.virtualearn.model.Rating;
+import br.com.fafic.virtualearn.model.Student;
 import br.com.fafic.virtualearn.model.Teacher;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
-import javafx.scene.control.*;
+import javafx.scene.control.Button;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
@@ -16,19 +20,13 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.util.List;
 
-public class DashboardTeacherViewController {
-
-    @FXML
-    Label labelTeacherName;
-
-    @FXML
-    Button logoutButton;
+public class DashboardStudentCourseViewController {
 
     @FXML
     TableView<Rating> tableRatings;
 
     @FXML
-    TableColumn<Rating, String> columnStudent;
+    TableColumn<Rating, String> columnTeacher;
 
     @FXML
     TableColumn<Rating, String> columnMatter;
@@ -46,33 +44,23 @@ public class DashboardTeacherViewController {
     TableColumn<Rating, Double> columnRFinal;
 
     @FXML
-    TextField fieldRating1;
+    Button logoutButton;
 
-    @FXML
-    TextField fieldRating2;
-
-    @FXML
-    TextField fieldRating3;
-
-    protected Login teacherLogged;
-
-    protected Teacher teacherAuthenticated;
+    protected Student studentAuthenticated;
 
     private TeacherController teacherController = new TeacherController();
 
     private RatingController ratingController = new RatingController();
 
-    public void setTeacherLogged(Login teacherLogged) {
-        this.teacherLogged = teacherLogged;
-        teacherAuthenticated = teacherController.getTeacherByLogin(teacherLogged);
-        labelTeacherName.setText(teacherAuthenticated.getName() + ",");
+    public void setStudentAuthenticated(Student studentAuthenticated) {
+        this.studentAuthenticated = studentAuthenticated;
         loadDataTable();
     }
 
     @FXML
     public void initialize(){
         columnMatter.setCellValueFactory(new PropertyValueFactory<>("matter"));
-        columnStudent.setCellValueFactory(new PropertyValueFactory<>("studentName"));
+        columnTeacher.setCellValueFactory(new PropertyValueFactory<>("teacherName"));
         columnR1.setCellValueFactory(new PropertyValueFactory<>("r1"));
         columnR2.setCellValueFactory(new PropertyValueFactory<>("r2"));
         columnR3.setCellValueFactory(new PropertyValueFactory<>("r3"));
@@ -85,29 +73,10 @@ public class DashboardTeacherViewController {
         List<Rating> ratings = ratingController.getAllTeachers();
 
         for (Rating rating : ratings) {
-            if(rating.getTeacher().equals(teacherAuthenticated)){
+            if(rating.getStudent().equals(studentAuthenticated)){
                 tableRatings.getItems().add(rating);
             }
         }
-    }
-
-    @FXML
-    public void onEditRatingsButtonClick(){
-        Rating rating = tableRatings.getSelectionModel().getSelectedItem();
-
-        rating.setR1(!fieldRating1.getText().isEmpty() ? Double.parseDouble(fieldRating1.getText()) : 0);
-
-        rating.setR2(!fieldRating2.getText().isEmpty() ? Double.parseDouble(fieldRating2.getText()) : 0);
-
-        rating.setR3(!fieldRating3.getText().isEmpty() ? Double.parseDouble(fieldRating3.getText()) : 0);
-
-        rating.calculateFinalRating();
-
-        ratingController.updateRating(rating);
-
-
-        loadDataTable();
-
     }
 
     @FXML
@@ -119,5 +88,4 @@ public class DashboardTeacherViewController {
         mainPane.getChildren().clear();
         mainPane.getChildren().add(loginRoot);
     }
-
 }

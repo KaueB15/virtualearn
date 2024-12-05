@@ -12,7 +12,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<StackPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" styleClass="stack-bg" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.com.fafic.virtualearn.view.LoginViewController">
+<StackPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" styleClass="stack-bg" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.com.fafic.virtualearn.view.LoginViewController">
    <children>
       <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="600.0" prefWidth="1000.0" styleClass="anchor-pane" stylesheets="@styles.css">
          <children>
@@ -29,7 +29,6 @@
                   <Insets />
                </opaqueInsets>
             </TextField>
-            <TextField fx:id="fieldPasswordShow" layoutX="527.0" layoutY="345.0" prefHeight="32.0" prefWidth="379.0" style="-fx-border-color: #111;" styleClass="text-field" stylesheets="@styles.css" />
             <PasswordField id="password" fx:id="fieldPassword" layoutX="526.0" layoutY="345.0" prefHeight="32.0" prefWidth="379.0" promptText="Senha" style="-fx-border-color: #111;" styleClass="text-field" stylesheets="@styles.css">
                <font>
                   <Font size="14.0" />
@@ -86,6 +85,7 @@
                   <Font name="System Bold" size="20.0" />
                </font>
             </Label>
+            <TextField fx:id="fieldPasswordShow" layoutX="527.0" layoutY="345.0" prefHeight="32.0" prefWidth="344.0" style="-fx-border-color: #111;" styleClass="text-field" stylesheets="@styles.css" visible="false" />
          </children>
       </AnchorPane>
    </children>

@@ -1,6 +1,7 @@
 package br.com.fafic.virtualearn.controllers;
 
 import br.com.fafic.virtualearn.dao.ContractDAO;
+import br.com.fafic.virtualearn.dao.CourseDAO;
 import br.com.fafic.virtualearn.exceptions.ContractNotFoundException;
 import br.com.fafic.virtualearn.exceptions.ContractNotRegisterException;
 import br.com.fafic.virtualearn.model.Contract;
@@ -14,6 +15,8 @@ import java.util.List;
 public class ContractController {
 
     ContractDAO contractDAO = new ContractDAO();
+
+    CourseDAO courseDAO = new CourseDAO();
 
     public void createContract(Course course, Teacher teacher, String matter, String teacherName, String teacherFormation){
 
@@ -75,6 +78,21 @@ public class ContractController {
             System.err.println(e.getMessage());
             return null;
         }
+    }
+
+    public void deleteContractByCourse(Course course){
+        List<Contract> contracts = contractDAO.getAllContract();
+
+        if(!contracts.isEmpty()){
+            for (Contract contract : contracts){
+                if(contract.getCourse().getId().equals(course.getId())){
+                    contractDAO.deleteContractById(contract.getId());
+                    System.out.println("DELETE COURSE");
+                }
+            }
+        }
+
+
     }
 
 }

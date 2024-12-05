@@ -22,11 +22,13 @@ public class Rating {
 
     private double finalRating;
 
-    @OneToOne
+    private String studentName, matter, teacherName;
+
+    @ManyToOne
     @JoinColumn(name = "idteacher")
     private Teacher teacher;
 
-    @OneToOne
+    @ManyToOne
     @JoinColumn(name = "idstudent")
     private Student student;
 

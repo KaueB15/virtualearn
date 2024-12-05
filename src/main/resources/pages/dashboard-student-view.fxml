@@ -10,7 +10,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<StackPane styleClass="stack-bg" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.com.fafic.virtualearn.view.DashboardStudentViewController">
+<StackPane styleClass="stack-bg" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.com.fafic.virtualearn.view.DashboardStudentViewController">
    <children>
       <AnchorPane prefHeight="600.0" prefWidth="1000.0" styleClass="anchor-pane" stylesheets="@styles.css">
          <children>
@@ -19,7 +19,7 @@
                   <Image url="@imgs/Design%20de%20Users2.png" />
                </image>
             </ImageView>
-            <Label layoutX="23.0" layoutY="14.0" text="[Student]," textFill="WHITE">
+            <Label fx:id="labelStudentName" layoutX="23.0" layoutY="14.0" text="[Student]," textFill="WHITE">
                <font>
                   <Font name="System Bold" size="22.0" />
                </font>
@@ -34,12 +34,12 @@
                   <Font name="System Bold" size="26.0" />
                </font>
             </Label>
-            <Button layoutX="903.0" layoutY="33.0" mnemonicParsing="false" text="Sair" textFill="#3d6297">
+            <Button fx:id="logoutButton" layoutX="903.0" layoutY="33.0" mnemonicParsing="false" onAction="#onClickLogoutButton" text="Sair" textFill="#3d6297">
                <font>
                   <Font name="System Bold" size="16.0" />
                </font>
             </Button>
-            <Button layoutX="416.0" layoutY="392.0" mnemonicParsing="false" prefHeight="53.0" prefWidth="168.0" style="-fx-background-color: #3D6297;" text="MATRICULAR-SE" textFill="WHITE" />
+            <Button layoutX="416.0" layoutY="392.0" mnemonicParsing="false" onAction="#onRegisterButtonClick" prefHeight="53.0" prefWidth="168.0" style="-fx-background-color: #3D6297;" text="MATRICULAR-SE" textFill="WHITE" />
             <ComboBox fx:id="comboboxCourses" layoutX="416.0" layoutY="333.0" onShowing="#onShowingComboBoxCourses" prefHeight="35.0" prefWidth="168.0" />
             <Label layoutX="416.0" layoutY="306.0" text="Cursos:">
                <font>
@@ -56,6 +56,11 @@
                   <Font size="25.0" />
                </font>
             </Text>
+            <Button fx:id="buttonCourse" onAction="#onCourseButtonClick" layoutX="794.0" layoutY="33.0" mnemonicParsing="false"  prefHeight="35.0" prefWidth="96.0" text="Curso" textFill="#3d6297">
+               <font>
+                  <Font name="System Bold" size="16.0" />
+               </font>
+            </Button>
          </children>
       </AnchorPane>
    </children>
