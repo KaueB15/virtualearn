@@ -10,8 +10,7 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.text.Font?>
 
-
-<StackPane styleClass="stack-bg" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.com.fafic.virtualearn.view.RegisterStudenterViewController">
+<StackPane styleClass="stack-bg" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.com.fafic.virtualearn.view.RegisterStudenterViewController">
    <children>
       <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1000.0" styleClass="anchor-pane" stylesheets="@styles.css">
          <children>
@@ -134,6 +133,31 @@
             <Label layoutX="558.0" layoutY="14.0" text="Venha ser nosso aluno" textAlignment="CENTER">
                <font>
                   <Font name="System Bold" size="30.0" />
+               </font>
+            </Label>
+            <Label fx:id="errorNullField" layoutX="603.0" layoutY="50.0" prefHeight="30.0" prefWidth="227.0" text="Algum campo está nulo" textFill="#e80f0f" visible="false">
+               <font>
+                  <Font name="System Bold" size="20.0" />
+               </font>
+            </Label>
+            <Label fx:id="errorLoginField" layoutX="874.0" layoutY="112.0" text="Login Existente" textFill="#e80f0f" visible="false">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Label>
+            <Label fx:id="errorDateField" layoutX="874.0" layoutY="332.0" text="Data invalida" textFill="#e80f0f" visible="false">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Label>
+            <Label fx:id="errorPhoneNumberField" layoutX="874.0" layoutY="448.0" text="Telefone Invalido" textFill="#e80f0f" visible="false">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Label>
+            <Label fx:id="errorCpfField" layoutX="874.0" layoutY="282.0" text="CPF Invalido" textFill="#e80f0f" visible="false">
+               <font>
+                  <Font name="System Bold" size="12.0" />
                </font>
             </Label>
          </children>

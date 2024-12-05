@@ -5,12 +5,17 @@ import br.com.fafic.virtualearn.exceptions.FieldIsNullException;
 import br.com.fafic.virtualearn.exceptions.LoginAlreadyRegisteredException;
 import br.com.fafic.virtualearn.exceptions.LoginNotFound;
 import br.com.fafic.virtualearn.model.Login;
+import br.com.fafic.virtualearn.view.RegisterStudenterViewController;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+
+import java.io.IOException;
 
 public class LoginController {
 
     private LoginDAO loginDAO = new LoginDAO();
 
-    public Login createLogin(String userName, String password, String type){
+    public Login createLogin(String userName, String password, String type) {
 
         try{
             if (fieldValidation(userName, password)){
@@ -36,7 +41,6 @@ public class LoginController {
             System.err.println(e.getMessage());
             return null;
         }catch (FieldIsNullException e){
-            System.err.println(e.getMessage());
             return null;
         }
 

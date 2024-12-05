@@ -5,9 +5,13 @@ import br.com.fafic.virtualearn.dao.StudentDAO;
 import br.com.fafic.virtualearn.exceptions.*;
 import br.com.fafic.virtualearn.model.Login;
 import br.com.fafic.virtualearn.model.Student;
+import br.com.fafic.virtualearn.view.RegisterStudenterViewController;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 
+import java.io.IOException;
 import java.time.LocalDate;
 import java.time.Period;
 import java.util.UUID;
@@ -20,7 +24,8 @@ public class StudentController {
 
     private LoginDAO loginDAO = new LoginDAO();
 
-    public boolean createNewStudent(String name, String email, String phoneNumber, LocalDate date, Login login, String cpf){
+    public boolean createNewStudent(String name, String email, String phoneNumber, LocalDate date, Login login, String cpf) {
+
         try{
 
             if (fieldValidation(name, email, phoneNumber, date, cpf)){
@@ -114,15 +119,15 @@ public class StudentController {
         return name.isEmpty() || email.isEmpty() || phoneNumber.isEmpty() || cpf.isEmpty() || date == null;
     }
 
-    private boolean cpfValidation(String cpf){
+    public boolean cpfValidation(String cpf){
         return cpf.length() < 11;
     }
 
-    private boolean phoneNumberValidation(String phoneNumber){
+    public boolean phoneNumberValidation(String phoneNumber){
         return  phoneNumber.length() < 11;
     }
 
-    private boolean dateValidation(LocalDate date) {
+    public boolean dateValidation(LocalDate date) {
         LocalDate now = LocalDate.now();
         if (date.isAfter(now)) {
             return false;
